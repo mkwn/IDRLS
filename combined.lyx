@@ -1,0 +1,6984 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\date{}
+
+% cleveref allows \ref{thm:asdf} instead of Theorem~\ref{thm:asdf}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\AtBeginDocument{\renewcommand{\ref}[1]{\cref{#1}}}
+
+\creflabelformat{enumi}{#2textup{#1}#3}
+
+\usepackage[parfill]{parskip}
+\setlength{\parskip}{\bigskipamount}
+
+%have space before theorems
+\begingroup
+    \makeatletter
+    \@for\theoremstyle:=definition,remark,plain\do{%
+        \expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{%
+            \addtolength\thm@preskip\parskip
+            }%
+        }
+\endgroup
+
+% LyX won't let me include cleveref before theorem declarations so I need to redefine everything as a hack
+\theoremstyle{plain}
+\newtheorem{mythm}{\protect\theoremname}
+\renewenvironment{thm}{\begin{mythm}}{\end{mythm}}
+\crefname{mythm}{Theorem}{Theorems}
+\theoremstyle{definition}
+\newtheorem{mydefn}[mythm]{\protect\definitionname}
+\renewenvironment{defn}{\begin{mydefn}}{\end{mydefn}}
+\theoremstyle{definition}
+\newtheorem{myfact}[mythm]{\protect\factname}
+\renewenvironment{fact}{\begin{myfact}}{\end{myfact}}
+\theoremstyle{definition}
+\newtheorem{myexample}[mythm]{\protect\examplename}
+\renewenvironment{example}{\begin{myexample}}{\end{myexample}}
+\theoremstyle{plain}
+\newtheorem{myprop}[mythm]{\protect\propositionname}
+\renewenvironment{prop}{\begin{myprop}}{\end{myprop}}
+\theoremstyle{plain}
+\newtheorem{mycor}[mythm]{\protect\corollaryname}
+\renewenvironment{cor}{\begin{mycor}}{\end{mycor}}
+\theoremstyle{plain}
+\newtheorem{mylem}[mythm]{\protect\lemmaname}
+\renewenvironment{lem}{\begin{mylem}}{\end{mylem}}
+\crefname{mylem}{Lemma}{Lemmas}
+\theoremstyle{plain}
+\newtheorem{myconjecture}{\protect\conjecturename}
+\renewenvironment{conjecture}{\begin{myconjecture}}{\end{myconjecture}}
+\theoremstyle{definition}
+\newtheorem{myrem}[mythm]{\protect\remarkname}
+\renewenvironment{rem}{\begin{myrem}}{\end{myrem}}
+\theoremstyle{remark}
+\newtheorem{myclaim}[mythm]{\protect\claimname}
+\renewenvironment{claim}{\begin{myclaim}}{\end{myclaim}}
+
+% equation cref format
+\crefformat{equation}{#2(#1)#3}
+
+% \left(\right) should behave the same as ()
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+\usepackage{pgfplots}
+\usetikzlibrary{pgfplots.groupplots}
+\usepackage{verbatim}
+
+%make sure tildes in url are vertically centered
+\makeatletter
+\renewcommand*{\UrlTildeSpecial}{%
+  \do\~{%
+    \mbox{%
+      \fontfamily{ptm}\selectfont
+      \textasciitilde
+    }%
+  }%  
+}%    
+\let\Url@force@Tilde\UrlTildeSpecial
+\makeatother
+
+%graph drawing
+\usepackage{tikz}
+\usetikzlibrary{external}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\tikzexternalize
+\tikzstyle{vertex}=[circle,draw=black,fill=black,inner sep=0,minimum size=0.2cm,text=white,font=\footnotesize]
+\tikzset{arc/.style={
+        decoration={markings,
+            mark= at position 0.5 with {\arrow{Latex[length=2mm,width=2mm]}} ,
+        },
+        postaction={decorate}
+    }
+}
+\tikzset{every loop/.style={min distance=50,in=50,out=130,looseness=7}}
+
+%caption labels
+\usepackage[labelfont=bf,labelsep=period]{caption}
+
+\usepackage{enumitem}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman cmr
+\font_sans cmss
+\font_typewriter cmtt
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing other 0.96
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch Folded
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip bigskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Intercalates and Discrepancy in Random Latin Squares
+\end_layout
+
+\begin_layout Author
+Matthew Kwan 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Department of Mathematics, ETH, 8092 Zürich.
+ Email: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{mailto:matthew.kwan@math.ethz.ch} {
+\backslash
+nolinkurl{matthew.kwan@math.ethz.ch}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Benny Sudakov
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Department of Mathematics, ETH, 8092 Zürich.
+ Email: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{mailto:benjamin.sudakov@math.ethz.ch}{
+\backslash
+nolinkurl{benjamin.sudakov@math.ethz.ch}}
+\end_layout
+
+\end_inset
+
+.
+ Research supported in part by SNSF grant 200021-149111.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\RR}{\mathbb{R}}
+{\boldsymbol{\mathbb{R}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\QQ}{\mathbb{Q}}
+{\boldsymbol{\mathbb{Q}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\HH}{\mathbb{H}}
+{\boldsymbol{\mathbb{H}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+{\boldsymbol{\mathbb{E}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Var}{\operatorname{Var}}
+{\mathbf{Var}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\CC}{\mathbb{C}}
+{\boldsymbol{\mathbb{C}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\NN}{\mathbb{N}}
+{\boldsymbol{\mathbb{N}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ZZ}{\mathbb{Z}}
+{\boldsymbol{\mathbb{Z}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\GG}{\mathbb{G}}
+{\boldsymbol{\mathbb{G}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\BB}{\mathbb{B}}
+{\boldsymbol{\mathbb{B}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\DD}{\mathbb{D}}
+{\boldsymbol{\mathbb{D}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cL}{\mathcal{L}}
+{\boldsymbol{\mathcal{L}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\supp}{\operatorname{supp}}
+{\mathbf{supp}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\one}{\boldsymbol{1}}
+{\boldsymbol{\boldsymbol{1}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\range}[1]{\left[#1\right]}
+{\boldsymbol{\left[#1\right]}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\d}{\operatorname{d}}
+{\mathbf{d}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\falling}[2]{\left(#1\right)_{#2}}
+{\boldsymbol{\left(#1\right)_{#2}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\f}{\mathbf{f}}
+{\boldsymbol{\mathbf{f}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\im}{\operatorname{im}}
+{\mathbf{im}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sp}{\operatorname{span}}
+{\mathbf{span}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\rank}{\operatorname{rank}}
+{\mathbf{rank}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sign}{\operatorname{sign}}
+{\mathbf{sign}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\mod}{\operatorname{mod}}
+{\mathbf{mod}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\id}{\operatorname{id}}
+{\mathbf{id}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\disc}{\operatorname{disc}}
+{\mathbf{disc}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\lindisc}{\operatorname{lindisc}}
+{\mathbf{lindisc}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tr}{\operatorname{tr}}
+{\mathbf{tr}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\adj}{\operatorname{adj}}
+{\mathbf{adj}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Unif}{\operatorname{Unif}}
+{\mathbf{Unif}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Po}{\operatorname{Po}}
+{\mathbf{Po}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Bin}{\operatorname{Bin}}
+{\mathbf{Bin}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Ber}{\operatorname{Ber}}
+{\mathbf{Ber}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Geom}{\operatorname{Geom}}
+{\mathbf{Geom}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sat}{\operatorname{sat}}
+{\mathbf{sat}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Hom}{\operatorname{Hom}}
+{\mathbf{Hom}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\vol}{\operatorname{vol}}
+{\mathbf{vol}\,}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor }
+{\boldsymbol{\left\lfloor #1\right\rfloor }}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil }
+{\boldsymbol{\left\lceil #1\right\rceil }}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cond}{\,\middle|\,}
+{\boldsymbol{|}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+polishL
+\backslash
+L
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\L}{\mathcal{L}}
+{\boldsymbol{\mathcal{L}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+DeclareRobustCommand{
+\backslash
+L}{
+\backslash
+ifmmode{
+\backslash
+mathcal{L}}
+\backslash
+else
+\backslash
+polishL
+\backslash
+fi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\randL}{\boldsymbol{L}}
+{\boldsymbol{\boldsymbol{L}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\randN}{\boldsymbol{N}}
+{\boldsymbol{\boldsymbol{N}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\randNt}{\boldsymbol{N_{2}}}
+{\boldsymbol{\boldsymbol{N_{2}}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\randNk}{\boldsymbol{N_{k}}}
+{\boldsymbol{\boldsymbol{N_{k}}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Folded
+status open
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+t
+\end_layout
+
+\begin_layout Corollary
+c
+\end_layout
+
+\begin_layout Lemma
+l
+\end_layout
+
+\begin_layout Proposition
+p
+\end_layout
+
+\begin_layout Conjecture
+c
+\end_layout
+
+\begin_layout Definition
+d
+\end_layout
+
+\begin_layout Example
+e
+\end_layout
+
+\begin_layout Remark
+r
+\end_layout
+
+\begin_layout Claim
+c
+\end_layout
+
+\begin_layout Fact
+f
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+An 
+\emph on
+intercalate
+\emph default
+ in a Latin square is a 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ Latin subsquare.
+ Let 
+\begin_inset Formula $\randN$
+\end_inset
+
+ be the number of intercalates in a uniformly random 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ Latin square.
+ We prove that asymptotically almost surely 
+\begin_inset Formula $\randN\ge\left(1-o\left(1\right)\right)\,n^{2}/4$
+\end_inset
+
+, and that 
+\begin_inset Formula $\E\randN\le\left(1+o\left(1\right)\right)\,n^{2}/2$
+\end_inset
+
+ (therefore asymptotically almost surely 
+\begin_inset Formula $\randN\le fn^{2}$
+\end_inset
+
+ for any 
+\begin_inset Formula $f\to\infty$
+\end_inset
+
+).
+ This significantly improves the previous best lower and upper bounds.
+ We also give an upper tail bound for the number of intercalates in two
+ fixed rows of a random Latin square.
+\end_layout
+
+\begin_layout Abstract
+In addition, we give a short proof of an asymptotically almost sure upper
+ bound on the discrepancy of a random Latin square.
+ This constitutes progress towards a conjecture of Linial and Luria.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ 
+\emph on
+Latin square
+\emph default
+ is an 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ array of the numbers between 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+ (we call these 
+\emph on
+symbols
+\emph default
+), such that each row and column contains each symbol exactly once.
+ Latin squares are a fundamental type of combinatorial design, and have
+ many essentially equivalent formulations (see for example 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Section~III, Theorem 1.11"
+key "CD06"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Since Erd
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+H o
+\end_layout
+
+\end_inset
+
+s and R
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'e
+\end_layout
+
+\end_inset
+
+nyi's seminal paper on random graphs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ER59"
+
+\end_inset
+
+ there has been an astounding volume of work on random combinatorial structures
+ of all kinds, but still very little is known about statistical properties
+ of random designs.
+ Latin squares are perhaps the simplest 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The uniform probability distribution over the set 
+\begin_inset Formula $\L$
+\end_inset
+
+ of 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ Latin squares is poorly understood, due to the rigidity of a Latin square
+ and the lack of any independence or recursive structure.
+ It is not even known how to efficiently generate a uniformly random 
+\begin_inset Formula $\randL\in\L$
+\end_inset
+
+.
+ Jacobson and Matthews 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JM96"
+
+\end_inset
+
+ and Pittenger 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pitt97"
+
+\end_inset
+
+ designed Markov chains on 
+\begin_inset Formula $\L$
+\end_inset
+
+ which converge to the uniform distribution, but it is not known if these
+ Markov chains converge rapidly.
+ One obstacle to empirically testing the speed of convergence is that little
+ is known about the likely structure of a random Latin square.
+\end_layout
+
+\begin_layout Standard
+An 
+\emph on
+intercalate
+\emph default
+ in a Latin square 
+\begin_inset Formula $L$
+\end_inset
+
+ is a 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ Latin subsquare.
+ That is, it is a pair of rows 
+\begin_inset Formula $i,j$
+\end_inset
+
+ and a pair of columns 
+\begin_inset Formula $x,y$
+\end_inset
+
+ such that 
+\begin_inset Formula $L_{i,x}=L_{j,y}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{i,y}=L_{j,x}$
+\end_inset
+
+.
+ One important statistic of a Latin square 
+\begin_inset Formula $L$
+\end_inset
+
+ is the number 
+\begin_inset Formula $N\left(L\right)$
+\end_inset
+
+ of intercalates that it contains.
+ Clearly this number is at most 
+\begin_inset Formula $n^{3}$
+\end_inset
+
+, because each of the 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+ entries in a Latin square can be involved in at most 
+\begin_inset Formula $n$
+\end_inset
+
+ intercalates.
+ Kotzig and Turgeon 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KT76"
+
+\end_inset
+
+ proved that for all orders except 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ and 
+\begin_inset Formula $4\times4$
+\end_inset
+
+ there exist Latin squares with no intercalates, and Heinrich and Wallis
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HW81"
+
+\end_inset
+
+ proved that for all 
+\begin_inset Formula $n$
+\end_inset
+
+ there exist 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ Latin squares with 
+\begin_inset Formula $\Omega\left(n^{3}\right)$
+\end_inset
+
+ intercalates.
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MW99"
+
+\end_inset
+
+ McKay and Wanless conjectured the following.
+\end_layout
+
+\begin_layout Conjecture
+\begin_inset CommandInset label
+LatexCommand label
+name "conj:mckay-wanless"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\randN=N\left(\randL\right)$
+\end_inset
+
+ be the number of intercalates in a uniformly random Latin square 
+\begin_inset Formula $\randL\in\L$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, a.a.s.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+By 
+\begin_inset Quotes eld
+\end_inset
+
+asymptotically almost surely
+\begin_inset Quotes erd
+\end_inset
+
+, or 
+\begin_inset Quotes eld
+\end_inset
+
+a.a.s.
+\begin_inset Quotes erd
+\end_inset
+
+, we mean that the probability of an event is 
+\begin_inset Formula $1-o\left(1\right)$
+\end_inset
+
+.
+ Here and for the rest of the paper, asymptotics are as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(1-\varepsilon\right)\frac{n^{2}}{4}\le\randN\le\left(1+\varepsilon\right)\frac{n^{2}}{4}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+They were able to prove the substantially weaker lower bound that a.a.s.
+ 
+\begin_inset Formula $\randN\ge n^{3/2-\varepsilon}$
+\end_inset
+
+ for any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+ Before our paper, the best upper bound was due to Cavenagh, Greenhill and
+ Wanless 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CGW08"
+
+\end_inset
+
+, who proved that a.a.s.
+ 
+\begin_inset Formula $\randN\le\left(9/2\right)n^{5/2}$
+\end_inset
+
+.
+ The techniques used for these upper and lower bounds are very different,
+ and we incorporate both to prove the following improved bounds.
+ In particular we are able to prove the lower bound in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "conj:mckay-wanless"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+mention that intercalates are the most interesting type of subsquare because
+ larger order subsquares are so rare
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:upper+lower"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\randN=N\left(\randL\right)$
+\end_inset
+
+ be the number of intercalates in a uniformly random Latin square 
+\begin_inset Formula $\randL\in\L$
+\end_inset
+
+.
+ First,
+\begin_inset Formula 
+\[
+\left(1-o\left(1\right)\right)\frac{n^{2}}{4}\le\E\randN\le\left(1+o\left(1\right)\right)\frac{n^{2}}{2}.
+\]
+
+\end_inset
+
+Second, for any fixed 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ and any function 
+\begin_inset Formula $f\to\infty$
+\end_inset
+
+, a.a.s.
+\begin_inset Formula 
+\[
+\left(1-\varepsilon\right)\frac{n^{2}}{4}\le\randN\le fn^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:upper+lower"
+
+\end_inset
+
+ is an immediate corollary of two theorems that may be of independent interest,
+ which we discuss in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:upper+lower"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A different property that we believe typically holds for random Latin squares
+ is that they have 
+\begin_inset Quotes eld
+\end_inset
+
+low discrepancy
+\begin_inset Quotes erd
+\end_inset
+
+ or are 
+\begin_inset Quotes eld
+\end_inset
+
+quasirandom
+\begin_inset Quotes erd
+\end_inset
+
+ in a certain sense.
+ This is related to a conjecture by Linial and Luria 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LL15"
+
+\end_inset
+
+.
+ To state their conjecture, note that 
+\begin_inset Formula $\L$
+\end_inset
+
+ can be interpreted as the set of all 
+\begin_inset Formula $n\times n\times n$
+\end_inset
+
+ zero-one arrays with a single 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ in each axis-aligned line.
+ To be specific, an 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ Latin square 
+\begin_inset Formula $L$
+\end_inset
+
+ corresponds to the 
+\begin_inset Formula $n\times n\times n$
+\end_inset
+
+ array 
+\begin_inset Formula $A=A\left(L\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $A_{i,x,q}=1$
+\end_inset
+
+ if 
+\begin_inset Formula $L_{i,x}=q$
+\end_inset
+
+.
+ A 
+\emph on
+box
+\emph default
+ is a set of the form 
+\begin_inset Formula $T=I\times X\times Q$
+\end_inset
+
+, where 
+\begin_inset Formula $I,X,Q\subseteq\range n$
+\end_inset
+
+.
+ For a box 
+\begin_inset Formula $T$
+\end_inset
+
+, define its 
+\emph on
+volume 
+\emph default
+
+\begin_inset Formula $\vol T=\left|X\right|\left|Y\right|\left|Z\right|$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $N_{T}\left(L\right)$
+\end_inset
+
+ be the number of ones in 
+\begin_inset Formula $A\left(L\right)$
+\end_inset
+
+ in the positions in the box 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ Linial and Luria's conjecture is as follows.
+\end_layout
+
+\begin_layout Conjecture
+\begin_inset CommandInset label
+LatexCommand label
+name "conj:linial-luria"
+
+\end_inset
+
+There exist arbitrarily large Latin squares 
+\begin_inset Formula $L$
+\end_inset
+
+ with the following property.
+ For any box 
+\begin_inset Formula $T=I\times X\times Q$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\left|N_{T}\left(L\right)-\frac{\vol T}{n}\right|=O\left(\sqrt{\vol T}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+that is, they conjecture that there are Latin squares (zero-one arrays)
+ such that in any box, the density of ones is very close to the density
+ 
+\begin_inset Formula $1/n$
+\end_inset
+
+ of ones in the entire 
+\begin_inset Formula $n\times n\times n$
+\end_inset
+
+ array.
+\end_layout
+
+\begin_layout Standard
+It is natural to expect that in fact the statement of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "conj:linial-luria"
+
+\end_inset
+
+ holds a.a.s.
+ for a uniformly random Latin square 
+\begin_inset Formula $\randL\in\L$
+\end_inset
+
+.
+ Linial and Luria proved the weaker result that a.a.s.
+ every empty box 
+\begin_inset Formula $T$
+\end_inset
+
+ with 
+\begin_inset Formula $N_{T}\left(\randL\right)=0$
+\end_inset
+
+ has 
+\begin_inset Formula $\vol T\le n^{2}\log^{2}n$
+\end_inset
+
+.
+ We are able to show that random Latin squares a.a.s.
+ have low discrepancy, although we are not able to reach the optimal conjectured
+ discrepancy in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "conj:linial-luria"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:weak-discrepancy"
+
+\end_inset
+
+For a uniformly random 
+\begin_inset Formula $\randL\in\L$
+\end_inset
+
+, we a.a.s.
+ have the following.
+ For any box 
+\begin_inset Formula $T=I\times X\times Q$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\left|N_{T}\left(\randL\right)-\frac{\vol T}{n}\right|=O\left(\sqrt{\vol T}\log n+n\log^{2}n\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:weak-discrepancy"
+
+\end_inset
+
+ is in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:discrepancy"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:upper+lower"
+
+\end_inset
+
+Outline of the proof of
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Theorem}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:upper+lower"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Lext}[1]{\mathcal{L}^{*}\left(#1\right)}
+{\boldsymbol{\mathcal{L}^{*}\left(#1\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Lk}[1]{\mathcal{L}_{#1}}
+{\boldsymbol{\mathcal{L}_{#1}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\K}{K}
+{\boldsymbol{K}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\A}{A}
+{\boldsymbol{A}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\B}{B}
+{\boldsymbol{B}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first new ingredient for the proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:upper+lower"
+
+\end_inset
+
+ is the following upper bound, both in expectation and with high probability,
+ for the number of intercalates in two rows of a random Latin square.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\randNt=N_{2}\left(\randL\right)$
+\end_inset
+
+ be the number of intercalates in the first two rows of a uniformly random
+ Latin square 
+\begin_inset Formula $\randL\in\L$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+\E\randNt\le1+o\left(1\right)
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\Pr\left(\randNt\ge t\right)=e^{-\Omega\left(t\log t\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $\E\randN={n \choose 2}\E\randNt$
+\end_inset
+
+ by linearity of expectation, so the upper bound on 
+\begin_inset Formula $\E\randN$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:upper+lower"
+
+\end_inset
+
+ immediately follows from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+.
+ (Then, the a.a.s.
+ upper bound on 
+\begin_inset Formula $\randN$
+\end_inset
+
+ follows from Markov's inequality).
+ We doubt that the bound on 
+\begin_inset Formula $\E\randNt$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+ is sharp; 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "conj:mckay-wanless"
+
+\end_inset
+
+ suggests that 
+\begin_inset Formula $\E\randNt\sim1/2$
+\end_inset
+
+, and we expect that moreover 
+\begin_inset Formula $\randNt$
+\end_inset
+
+ has an asymptotic Poisson distribution with this mean.
+\end_layout
+
+\begin_layout Standard
+The second ingredient for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:upper+lower"
+
+\end_inset
+
+ is a bound for the lower tail probability of the number of intercalates
+ in a random Latin square.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:lower-tail"
+
+\end_inset
+
+There is a constant 
+\begin_inset Formula $C$
+\end_inset
+
+ such that the following holds.
+ Let 
+\begin_inset Formula $\randN=N\left(\randL\right)$
+\end_inset
+
+ be the number of intercalates in a uniformly random Latin square 
+\begin_inset Formula $\randL\in\L$
+\end_inset
+
+.
+ Suppose 
+\begin_inset Formula $\varepsilon\ge C\log^{1/3}n/n^{1/6}$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+\Pr\left(\E\randN<\frac{n^{2}}{4}\left(1-\varepsilon\right)\right)\le\exp\left(-\Omega\left(\varepsilon^{2}\sqrt{n}\right)\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:lower-tail"
+
+\end_inset
+
+ implies the a.a.s.
+ lower bound on 
+\begin_inset Formula $\randN$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:upper+lower"
+
+\end_inset
+
+, and because 
+\begin_inset Formula $\randN\ge0$
+\end_inset
+
+ this in turn implies the lower bound on 
+\begin_inset Formula $\E\randN$
+\end_inset
+
+.
+ We expect that 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:lower-tail"
+
+\end_inset
+
+ is far from optimal, and that the correct order of magnitude of the lower
+ tail probability is 
+\begin_inset Formula $\exp\left(-\Omega\left(\varepsilon^{2}n^{2}\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When studying random combinatorial structures with little independence,
+ an indispensable technique is the analysis of 
+\begin_inset Quotes eld
+\end_inset
+
+switching
+\begin_inset Quotes erd
+\end_inset
+
+ operations that make local changes to an object.
+ One defines switchings that affect some parameter in a controllable way,
+ then estimates the number of ways to switch to and from each object, to
+ understand the relative likelihood of each possible value of the parameter.
+ Switchings underpin the proofs of both 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:lower-tail"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Latin squares are quite 
+\begin_inset Quotes eld
+\end_inset
+
+rigid
+\begin_inset Quotes erd
+\end_inset
+
+ objects, so one cannot easily define switching operations that make only
+ small changes to a Latin square.
+ In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CGW08"
+
+\end_inset
+
+, Cavenagh, Greenhill and Wanless managed to overcome this difficulty when
+ studying two fixed rows of a random Latin square.
+ They considered switchings that make wide-ranging, complicated changes
+ to the whole Latin square, but have a controllable effect on the two rows
+ of interest.
+ We prove 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+ with a simpler switching operation in a similar spirit.
+ The details are in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:two-rows"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To prove 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:lower-tail"
+
+\end_inset
+
+, we use 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+ and some ideas from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MW99"
+
+\end_inset
+
+.
+ A 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ 
+\emph on
+Latin rectangle
+\emph default
+ is a 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ array of the numbers from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $n$
+\end_inset
+
+, where each number appears once in each row and not more than once in each
+ column.
+ We denote the set of all 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ Latin rectangles by 
+\begin_inset Formula $\Lk k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $k\le n$
+\end_inset
+
+, any 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ Latin rectangle can be extended to a 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ Latin square.
+ The number of ways to do this does not depend too much on the Latin rectangle.
+ Indeed, for a 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ Latin rectangle 
+\begin_inset Formula $L\in\Lk k$
+\end_inset
+
+ let 
+\begin_inset Formula $\Lext L\subseteq\L$
+\end_inset
+
+ be the set of 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ Latin squares whose first 
+\begin_inset Formula $k$
+\end_inset
+
+ rows coincide with 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ The following estimate is proved with standard upper and lower bounds on
+ the permanent, and is proved in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:permanent"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:extend-to-latin-squares"
+
+\end_inset
+
+For Latin rectangles 
+\begin_inset Formula $L,L'\in\Lk k$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\frac{\Lext L}{\Lext{L'}}\le e^{O\left(n\log^{2}n\right)},
+\]
+
+\end_inset
+
+uniformly over 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+So, the strategy is to find a lower bound on the number of intercalates
+ in a random 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ Latin rectangle (for some 
+\begin_inset Formula $k$
+\end_inset
+
+ to be determined) that holds with very high probability.
+ We will then be able to apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+ to show that the number of intercalates in the first 
+\begin_inset Formula $k$
+\end_inset
+
+ rows of a random Latin square satisfies the same bound with high probability.
+ We can use the union bound to show that this holds simultaneously for many
+ choices of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows, which gives a lower bound for the total number of intercalates in
+ a random Latin square.
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MW99"
+
+\end_inset
+
+, McKay and Wanless studied the number of intercalates in a random Latin
+ rectangle.
+ Using their methods, we will prove the following estimate.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:lower-bound-rectangles"
+
+\end_inset
+
+There is a constant 
+\begin_inset Formula $C$
+\end_inset
+
+ such that the following holds.
+ Let 
+\begin_inset Formula $\randL\in\Lk k$
+\end_inset
+
+ be a uniformly random 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ Latin rectangle, conditioned on the event that no row is involved in more
+ than 
+\begin_inset Formula $\K$
+\end_inset
+
+ intercalates.
+ Suppose 
+\begin_inset Formula $k\ge\sqrt{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $k\le\K\le n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $\randN=N\left(\randL\right)$
+\end_inset
+
+ be the number of intercalates in 
+\begin_inset Formula $\randL$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $t\ge Ck^{2}\left(\K/n+k/\K\right)$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\Pr\left(\randN\le\frac{k^{2}}{4}-t\right)\le e^{-\Omega\left(t^{2}/k^{2}\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+ and the union bound imply that with high probability no row is involved
+ in many intercalates, which will give us an appropriate value of 
+\begin_inset Formula $\K$
+\end_inset
+
+ with which to apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lower-bound-rectangles"
+
+\end_inset
+
+.
+ In 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:rectangles-lower-tail"
+
+\end_inset
+
+ we prove 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lower-bound-rectangles"
+
+\end_inset
+
+, and in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:squares-lower-tail"
+
+\end_inset
+
+ we give the details of how to combine 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lower-bound-rectangles"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+ to obtain 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:lower-tail"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:two-rows"
+
+\end_inset
+
+Proof of
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Theorem}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\s}[1]{\sigma_{1,2}\left(#1\right)}
+{\boldsymbol{\sigma_{1,2}\left(#1\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\C}[2]{C^{#1}\left(#2\right)}
+{\boldsymbol{C^{#1}\left(#2\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\c}[2]{c_{#1}\left(#2\right)}
+{\boldsymbol{c_{#1}\left(#2\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\X}[2]{N^{#1}\left(#2\right)}
+{\boldsymbol{N^{#1}\left(#2\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\Lk}[1]{\mathcal{L}\left(#1\right)}
+{\boldsymbol{\mathcal{L}\left(#1\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sw}[2]{\mathrm{fx}_{#1}\left(#2\right)}
+{\boldsymbol{\mathrm{fx}_{#1}\left(#2\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\fl}[2]{\mathrm{fl}_{#1}\left(#2\right)}
+{\boldsymbol{\mathrm{fl}_{#1}\left(#2\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\jo}[2]{\mathrm{jo}_{#1}\left(#2\right)}
+{\boldsymbol{\mathrm{jo}_{#1}\left(#2\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\FL}[1]{\mathrm{FL}\left(#1\right)}
+{\boldsymbol{\mathrm{FL}\left(#1\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that any two rows 
+\begin_inset Formula $i,j$
+\end_inset
+
+ of a Latin square 
+\begin_inset Formula $L\in\L$
+\end_inset
+
+ define a permutation 
+\begin_inset Formula $\sigma_{i,j}\left(L\right)$
+\end_inset
+
+ on the columns of 
+\begin_inset Formula $L$
+\end_inset
+
+: column 
+\begin_inset Formula $x$
+\end_inset
+
+ maps to the column 
+\begin_inset Formula $y$
+\end_inset
+
+ with 
+\begin_inset Formula $L_{i,y}=L_{j,x}$
+\end_inset
+
+.
+ Note that this permutation is a derangement; it has no fixed points 
+\begin_inset Formula $x\mapsto x$
+\end_inset
+
+.
+ We will be concerned with the permutation 
+\begin_inset Formula $\s L$
+\end_inset
+
+ defined by the first two rows.
+ This permutation decomposes into cycles, the set of which we denote 
+\begin_inset Formula $\C{}L$
+\end_inset
+
+.
+ (For our purposes a cycle is a set of columns).
+ Let 
+\begin_inset Formula $\C{\alpha}L\subseteq\C{}L$
+\end_inset
+
+ be the set of cycles of length 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, and for a column 
+\begin_inset Formula $x$
+\end_inset
+
+ let 
+\begin_inset Formula $\c xL\in\C{}L$
+\end_inset
+
+ be the cycle which contains 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\X{\alpha}L=\left|\C{\alpha}L\right|$
+\end_inset
+
+.
+ We are interested in 
+\begin_inset Formula $\randNt=N_{2}\left(\randL\right)=\X 2{\randL}$
+\end_inset
+
+ for a uniformly random 
+\begin_inset Formula $\randL\in\L$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\Lk s\subseteq\L$
+\end_inset
+
+ be the set of Latin squares 
+\begin_inset Formula $L$
+\end_inset
+
+ with 
+\begin_inset Formula $\X 2L=s$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We first define two primitive switching operations on a Latin square, chosen
+ such that they have a controllable effect on the intercalate count in the
+ first two rows.
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:primitive-switchings"
+
+\end_inset
+
+Consider a Latin square 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For any cycle 
+\begin_inset Formula $c\in\C{}L$
+\end_inset
+
+, we can obtain a new Latin square 
+\begin_inset Formula $\sw cL$
+\end_inset
+
+ by exchanging the contents of rows 1 and 2, for each column in 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ We call this operation 
+\emph on
+fix
+\emph default
+.
+ We also write 
+\begin_inset Formula $\sw xL$
+\end_inset
+
+ to denote 
+\begin_inset Formula $\sw{c_{x}\left(L\right)}L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Just as two rows 
+\begin_inset Formula $i,j$
+\end_inset
+
+ of 
+\begin_inset Formula $L$
+\end_inset
+
+ define the permutation 
+\begin_inset Formula $\sigma_{i,j}\left(L\right)$
+\end_inset
+
+, every two columns 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ also define a permutation 
+\begin_inset Formula $\tau_{x,y}\left(L\right)$
+\end_inset
+
+ of rows (with row 
+\begin_inset Formula $i$
+\end_inset
+
+ mapping to the row 
+\begin_inset Formula $j$
+\end_inset
+
+ which satisfies 
+\begin_inset Formula $L_{j,x}=L_{i,y}$
+\end_inset
+
+).
+ In the cycle decomposition of 
+\begin_inset Formula $\tau_{x,y}\left(L\right)$
+\end_inset
+
+, if rows 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $2$
+\end_inset
+
+ are in different cycles 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+, then we say 
+\begin_inset Formula $\left\{ x,y\right\} $
+\end_inset
+
+ is a 
+\emph on
+flippable
+\emph default
+ pair, and write 
+\begin_inset Formula $\left\{ x,y\right\} \in\FL L$
+\end_inset
+
+.
+ We can obtain a new Latin square 
+\begin_inset Formula $\fl{\left\{ x,y\right\} }L$
+\end_inset
+
+ by exchanging column 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ for each row in 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+.
+ We call this operation 
+\emph on
+flip
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Formula $L=\quad$
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Formula $\qquad\qquad$
+\end_inset
+
+
+\begin_inset Formula $\sw{\left\{ 2,3\right\} }L=\quad$
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+We show the effect of the fix operation.
+ (Not all cells are depicted).
+ Note that 
+\begin_inset Formula $\left\{ 1,3\right\} $
+\end_inset
+
+ was not flippable in 
+\begin_inset Formula $L$
+\end_inset
+
+ but is flippable in 
+\begin_inset Formula $\sw{\left\{ 2,3\right\} }L$
+\end_inset
+
+.
+ Also note that 
+\begin_inset Formula $\s L=\s{\sw{\left\{ 2,3\right\} }L}=\left(1\,4\,5\right)\left(2\,3\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Formula $L=\quad$
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Formula $\qquad\qquad$
+\end_inset
+
+
+\begin_inset Formula $\fl{\left\{ 1,3\right\} }L=\quad$
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+We show the effect of the flip operation.
+ Note that 
+\begin_inset Formula $\s L=\left(1\,4\,5\right)\left(2\,3\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\s{\fl{\left\{ 1,3\right\} }L}=\left(1\,2\,3\,4\,5\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We will be using the flip operation to merge two cycles into a larger cycle,
+ and we will be using the fix operation to make a pair of columns from different
+ cycles flippable, if necessary.
+ To justify this, we make a number of simple observations about the properties
+ of the fix and flip operations.
+\end_layout
+
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact:observations"
+
+\end_inset
+
+The operations in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:primitive-switchings"
+
+\end_inset
+
+ have the following consequences.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $\left\{ x,y\right\} \in\FL L$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\c xL\ne\c yL$
+\end_inset
+
+, with say 
+\begin_inset Formula $\c xL\in\C{\alpha}L$
+\end_inset
+
+ and 
+\begin_inset Formula $\c yL\in\C{\beta}L$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $L'=\fl{\left\{ x,y\right\} }L$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\[
+\c x{L'}=\c y{L'}=\c xL\cup\c yL\in\C{\alpha+\beta}{L'}.
+\]
+
+\end_inset
+
+Also, 
+\begin_inset Formula $\C{}L\backslash\left\{ \c xL,\c yL\right\} =\C{}{L'}\backslash\left\{ \c x{L'}\right\} $
+\end_inset
+
+.
+ That is, flipping with 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ merges 
+\begin_inset Formula $\c xL$
+\end_inset
+
+ and 
+\begin_inset Formula $\c yL$
+\end_inset
+
+ and leaves the other cycles unaffected.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $c\in\C 2L$
+\end_inset
+
+ is an intercalate, then 
+\begin_inset Formula $\s L=\s{\sw cL}.$
+\end_inset
+
+ That is, the fix operation does not change the induced permutation.
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $\c xL\ne\c yL$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ x,y\right\} \in\FL L$
+\end_inset
+
+ (respectively, 
+\begin_inset Formula $\left\{ x,y\right\} \notin\FL L$
+\end_inset
+
+).
+ Let 
+\begin_inset Formula $L'=\sw xL$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\left\{ x,y\right\} \notin\FL{L'}$
+\end_inset
+
+ (respectively 
+\begin_inset Formula $\left\{ x,y\right\} \in\FL{L'}$
+\end_inset
+
+).
+ That is, the fix operation changes the flippability of 
+\begin_inset Formula $\left\{ x,y\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For any cycle 
+\begin_inset Formula $c$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sw ci\left(\sw cL\right)=L$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $\left\{ x,y\right\} \in\FL L$
+\end_inset
+
+, we have 
+\begin_inset Formula $\fl{\left\{ x,y\right\} }{\fl{\left\{ x,y\right\} }L}=L$
+\end_inset
+
+.
+ That is, the fix and flip operations are both involutions and in particular
+ they are invertible.
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $\left\{ x,y\right\} \in\FL L$
+\end_inset
+
+ and 
+\begin_inset Formula $\c xL\ne\c yL$
+\end_inset
+
+, with 
+\begin_inset Formula $\c yL\in\C 2L$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\sigma'=\s{\fl{\left\{ x,y\right\} }L}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\left(\sigma'\right)^{2}\left(x\right)=y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+With these observations in mind we can define a compound operation that
+ merges an intercalate with another cycle, regardless of flippability.
+\end_layout
+
+\begin_layout Definition
+For columns 
+\begin_inset Formula $x,y$
+\end_inset
+
+ with 
+\begin_inset Formula $\c xL\ne\c yL$
+\end_inset
+
+ and 
+\begin_inset Formula $\c yL\in\C 2L$
+\end_inset
+
+ define 
+\begin_inset Formula 
+\[
+\jo{x,y}L=\begin{cases}
+\fl{\left\{ x,y\right\} }L & \mbox{if }\left\{ x,y\right\} \in\FL L,\\
+\fl{\left\{ x,y\right\} }{\sw yL} & \mbox{if }\left\{ x,y\right\} \notin\FL L.
+\end{cases}
+\]
+
+\end_inset
+
+We call this operation 
+\emph on
+join
+\emph default
+.
+ If also 
+\begin_inset Formula $\c xL\in\C 2L$
+\end_inset
+
+ this is a 
+\emph on
+double
+\emph default
+ join, otherwise it is a 
+\emph on
+single 
+\emph default
+join.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Lk s\subseteq\L$
+\end_inset
+
+ be the set of Latin squares 
+\begin_inset Formula $L$
+\end_inset
+
+ with 
+\begin_inset Formula $s$
+\end_inset
+
+ intercalates in the first two rows (that is, with 
+\begin_inset Formula $\X 2L=s$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+We make some observations about the join operation.
+\end_layout
+
+\begin_layout Fact
+Single and double joins have the following consequences.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+A single join always decreases 
+\begin_inset Formula $\X 2{\cdot}$
+\end_inset
+
+ by exactly one, and the merged cycle has length greater than 4.
+\end_layout
+
+\begin_layout Enumerate
+A double join always decreases 
+\begin_inset Formula $\X 2{\cdot}$
+\end_inset
+
+ by exactly two, and the merged cycle has length 4.
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $L\in\Lk{s+1}$
+\end_inset
+
+, the number of Latin squares 
+\begin_inset Formula $L'\in\Lk s$
+\end_inset
+
+ which we can reach with a single join is 
+\begin_inset Formula 
+\[
+\left(n-2\X 2L\right)\times2\X 2L=2\left(s+1\right)\left(n-2\left(s+1\right)\right).
+\]
+
+\end_inset
+
+(Choose a column 
+\begin_inset Formula $x$
+\end_inset
+
+ not in an intercalate and a column 
+\begin_inset Formula $y$
+\end_inset
+
+ in an intercalate).
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $L\in\Lk{s+2}$
+\end_inset
+
+, the number of Latin squares 
+\begin_inset Formula $L'\in\Lk s$
+\end_inset
+
+ which we can reach with a double join is 
+\begin_inset Formula 
+\[
+2\X 2L\times2\left(\X 2L-1\right)=4\left(s^{2}+3s+2\right)\ge2s^{2}.
+\]
+
+\end_inset
+
+(Choose a column 
+\begin_inset Formula $x$
+\end_inset
+
+ in an intercalate and a column 
+\begin_inset Formula $y$
+\end_inset
+
+ in a different intercalate).
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $L'\in\Lk s$
+\end_inset
+
+, the number of Latin squares 
+\begin_inset Formula $L\in\Lk{s+1}$
+\end_inset
+
+ which can reach 
+\begin_inset Formula $L'$
+\end_inset
+
+ with a single join is at most 
+\begin_inset Formula 
+\[
+2\left(n-2\X 2L-3\X 3L-4\X 4L\right)\le2\left(n-2s\right).
+\]
+
+\end_inset
+
+(For 
+\begin_inset Formula $\sigma'=\s{L'}$
+\end_inset
+
+, choose a column 
+\begin_inset Formula $x$
+\end_inset
+
+ in a cycle with length greater than 4, and let 
+\begin_inset Formula $y=\left(\sigma'\right)^{2}\left(x\right)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\left\{ x,y\right\} \in\FL{L'}$
+\end_inset
+
+ then flip, and then either fix or don't).
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $L'\in\Lk s$
+\end_inset
+
+, the number of Latin squares 
+\begin_inset Formula $L\in\Lk{s+2}$
+\end_inset
+
+ which can reach 
+\begin_inset Formula $L'$
+\end_inset
+
+ with a double join is at most 
+\begin_inset Formula 
+\[
+2\times4\X 4L\le2n.
+\]
+
+\end_inset
+
+ (For 
+\begin_inset Formula $\sigma'=\s{L'}$
+\end_inset
+
+, choose a column 
+\begin_inset Formula $x$
+\end_inset
+
+ in a 4-cycle, let 
+\begin_inset Formula $y=\left(\sigma'\right)^{2}\left(x\right)$
+\end_inset
+
+, flip if possible and then either fix or don't).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Let 
+\begin_inset Formula $J\left(s\right)$
+\end_inset
+
+ be the number of ways to single join from a Latin square in 
+\begin_inset Formula $\Lk{s+1}$
+\end_inset
+
+ to one in 
+\begin_inset Formula $\Lk s$
+\end_inset
+
+.
+ We have 
+\begin_inset Formula 
+\begin{align*}
+2\left(s+1\right)\left(n-2\left(s+1\right)\right)\left|\Lk{s+1}\right| & =J\left(s\right)\le2\left(n-2s\right)\left|\Lk s\right|,\\
+\frac{\left|\Lk{s+1}\right|}{\left|\Lk s\right|} & \le\frac{n-2s}{\left(s+1\right)\left(n-2s-2\right)}.
+\end{align*}
+
+\end_inset
+
+Similarly, double-counting the number of ways to double join from a Latin
+ square in 
+\begin_inset Formula $\Lk{s+2}$
+\end_inset
+
+ to one in 
+\begin_inset Formula $\Lk s$
+\end_inset
+
+, we obtain 
+\begin_inset Formula 
+\[
+\frac{\left|\Lk{s+2}\right|}{\left|\Lk s\right|}\le\frac{n}{s^{2}}.
+\]
+
+\end_inset
+
+So, 
+\begin_inset Formula 
+\[
+\frac{\left|\Lk{s+1}\right|}{\left|\Lk s\right|}\le\frac{1}{s+1}\left(1+O\left(\frac{1}{n}\right)\right)
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $2s\le n/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|\Lk{s+2}\right|/\left|\Lk s\right|\le1$
+\end_inset
+
+ for 
+\begin_inset Formula $2s\ge n/2$
+\end_inset
+
+ (for large 
+\begin_inset Formula $n$
+\end_inset
+
+).
+ It follows that
+\begin_inset Formula 
+\begin{align*}
+\Pr\left(\randNt=t\right) & \le\frac{\left|\Lk t\right|}{\left|\Lk 0\right|}\le\prod_{s=0}^{t-1}\frac{\left|\Lk{s+1}\right|}{\left|\Lk s\right|}=\frac{1}{t!}e^{O\left(t/n\right)}
+\end{align*}
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\Pr\left(t<\randNt\le\frac{n}{4}\right)\le O\left(1\right)\sum_{s=t}^{n/2}\frac{1}{s!}\le O\left(\frac{1}{t!}\right)\sum_{r=0}^{\infty}\frac{1}{t^{r}}=O\left(\frac{1}{t!}\right)=e^{-\Omega\left(t\log t\right)}
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $t\le n/4$
+\end_inset
+
+, and
+\begin_inset Formula 
+\begin{align*}
+\Pr\left(\randNt=t\right) & =O\left(\frac{1}{\left(n/4\right)!}\right),\\
+\Pr\left(\randNt>t\right) & \le O\left(\frac{n}{\left(n/4\right)!}\right)=e^{-\Omega\left(n\log n\right)}=e^{-\Omega\left(t\log t\right)}
+\end{align*}
+
+\end_inset
+
+for 
+\begin_inset Formula $t>n/4$
+\end_inset
+
+.
+ It follows that 
+\begin_inset Formula $\Pr\left(\randNt\ge t\right)=e^{-\Omega\left(t\log t\right)}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We now bound 
+\begin_inset Formula $\E\randNt$
+\end_inset
+
+.
+ Fix some constant 
+\begin_inset Formula $C$
+\end_inset
+
+, fix some 
+\begin_inset Formula $k$
+\end_inset
+
+ with 
+\begin_inset Formula $1\ll k\ll n$
+\end_inset
+
+, and define each 
+\begin_inset Formula $d_{t}$
+\end_inset
+
+ (
+\begin_inset Formula $t\le k$
+\end_inset
+
+) by 
+\begin_inset Formula 
+\[
+\frac{\Pr\left(\randNt=t\right)}{\Pr\left(\randNt=0\right)}=\frac{\left|\Lk t\right|}{\left|\Lk 0\right|}=\frac{1}{t!}e^{Ck/n}-d_{t}.
+\]
+
+\end_inset
+
+For large 
+\begin_inset Formula $C$
+\end_inset
+
+ each 
+\begin_inset Formula $d_{t}$
+\end_inset
+
+ is positive.
+ We have
+\begin_inset Formula 
+\[
+1\sim\sum_{t=0}^{k}\Pr\left(\randNt=t\right)\sim\Pr\left(\randNt=0\right)\left(e^{Ck/n}\sum_{t=0}^{k}1/t!-\sum_{t=0}^{k}d_{t}\right)\sim\Pr\left(\randNt=0\right)\left(e-\sum_{t=1}^{k}d_{t}\right)
+\]
+
+\end_inset
+
+(note that 
+\begin_inset Formula $d_{0}=o\left(1\right)$
+\end_inset
+
+) and 
+\begin_inset Formula 
+\[
+\E\randNt=\sum_{t=0}^{k}t\Pr\left(\randNt=t\right)=\Pr\left(\randNt=0\right)\left(e^{Ck/n}\sum_{t=0}^{k}1/\left(t-1\right)!-\sum_{t=0}^{k}td_{t}\right)\sim\frac{e-\sum_{t=1}^{k}td_{t}}{e-\sum_{t=1}^{k}d_{t}}\le1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:rectangles-lower-tail"
+
+\end_inset
+
+Proof of
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Lemma}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lower-bound-rectangles"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\Lk}[1]{\mathcal{L}_{#1}}
+{\boldsymbol{\mathcal{L}_{#1}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\LkK}[2]{\mathcal{L}_{#1}^{#2}}
+{\boldsymbol{\mathcal{L}_{#1}^{#2}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\LkKs}[3]{\mathcal{L}_{#1}^{#3}\left(#2\right)}
+{\boldsymbol{\mathcal{L}_{#1}^{#3}\left(#2\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ro}[3]{\mathrm{ro}_{#1}^{#2}\left(#3\right)}
+{\boldsymbol{\mathrm{ro}_{#1}^{#2}\left(#3\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tw}[3]{\mathrm{tw}_{#1}^{#2}\left(#3\right)}
+{\boldsymbol{\mathrm{tw}_{#1}^{#2}\left(#3\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\LkK k{\K}\subseteq\Lk k$
+\end_inset
+
+ be the set of Latin rectangles 
+\begin_inset Formula $L$
+\end_inset
+
+ in which no row is involved in more than 
+\begin_inset Formula $\K$
+\end_inset
+
+ intercalates.
+ (We say these Latin rectangles are 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Let 
+\begin_inset Formula $\LkKs ks{\K}\subseteq\LkK k{\K}$
+\end_inset
+
+ be the set of good Latin rectangles with exactly 
+\begin_inset Formula $s$
+\end_inset
+
+ intercalates.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:twist"
+
+\end_inset
+
+Consider a Latin rectangle 
+\begin_inset Formula $L\in\LkK k{\K}$
+\end_inset
+
+.
+ For a row 
+\begin_inset Formula $i$
+\end_inset
+
+ and a cyclically ordered set of columns 
+\begin_inset Formula $\left(x\,y\,z\right)$
+\end_inset
+
+, we obtain a new 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ array 
+\begin_inset Formula $L'=\ro{\left(x\,y\,z\right)}iL$
+\end_inset
+
+ by swapping the symbols in positions 
+\begin_inset Formula $\left(i,x\right),\,\left(i,y\right),\,\left(i,z\right)$
+\end_inset
+
+ in a cyclic fashion: 
+\begin_inset Formula $L_{i,x}'=L_{i,z},\,L_{i,y}'=L_{i,x},\,L_{i,z}'=L_{i,x}$
+\end_inset
+
+.
+ This operation is called 
+\emph on
+rotate
+\emph default
+.
+ Note that 
+\begin_inset Formula $L'$
+\end_inset
+
+ might not be a Latin rectangle, because we might have caused a column to
+ contain two of the same symbol.
+ 
+\end_layout
+
+\begin_layout Definition
+Now, we define the 
+\emph on
+twist 
+\emph default
+operation.
+ For a Latin rectangle 
+\begin_inset Formula $L\in\LkK k{\K}$
+\end_inset
+
+, a row 
+\begin_inset Formula $i$
+\end_inset
+
+ and distinct columns 
+\begin_inset Formula $x,y,z,x',y',z'$
+\end_inset
+
+, let 
+\begin_inset Formula $L'=\ro{\left(x\,y\,z\right)}i{\ro{\left(x'\,y'\,z'\right)}iL}$
+\end_inset
+
+.
+ Suppose the following conditions are satisfied.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The rectangle 
+\begin_inset Formula $L'$
+\end_inset
+
+ is a Latin rectangle, and it is good (that is, 
+\begin_inset Formula $L'\in\LkK k{\K}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+The positions 
+\begin_inset Formula $\left(i,y\right),\,\left(i,z\right),\,\left(i,y'\right),\,\left(i,z'\right)$
+\end_inset
+
+ are involved in no intercalates in 
+\begin_inset Formula $L$
+\end_inset
+
+ or in 
+\begin_inset Formula $L'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The positions 
+\begin_inset Formula $\left(i,x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(i,x'\right)$
+\end_inset
+
+ are involved in no intercalates in 
+\begin_inset Formula $L$
+\end_inset
+
+, and in 
+\begin_inset Formula $L'$
+\end_inset
+
+ there is an intercalate involving both 
+\begin_inset Formula $\left(i,x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(i,x'\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Then we define the twist of 
+\begin_inset Formula $L$
+\end_inset
+
+ by 
+\begin_inset Formula $\tw{\left\{ \left(x,y,z\right),\left(x',y',z'\right)\right\} }iL=L'$
+\end_inset
+
+.
+ Note that we might have created (up to 
+\begin_inset Formula $O\left(k\right)$
+\end_inset
+
+) intercalates involving 
+\begin_inset Formula $\left(i,x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(i,x'\right)$
+\end_inset
+
+, other than the
+\emph on
+ 
+\emph default
+
+\begin_inset Quotes eld
+\end_inset
+
+main
+\begin_inset Quotes erd
+\end_inset
+
+ in tercalate involving both 
+\begin_inset Formula $\left(i,x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(i,x'\right)$
+\end_inset
+
+.
+ If the only new intercalate in 
+\begin_inset Formula $L'$
+\end_inset
+
+ is the main one, then we say the twist was 
+\emph on
+simple
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Formula $L=\quad$
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Formula $\qquad\qquad$
+\end_inset
+
+
+\begin_inset Formula $\tw{\left\{ \left(3,1,2\right),\left(4,6,5\right)\right\} }1L=\quad$
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:rotate"
+
+\end_inset
+
+We show the effect of the twist operation to create an intercalate involving
+ 
+\begin_inset Formula $\left(1,3\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(1,4\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:forwards-rotate"
+
+\end_inset
+
+The number of good Latin rectangles 
+\begin_inset Formula $L'\in\LkKs k{s+1}{\K}$
+\end_inset
+
+ which we can reach via a simple twist from a specific good Latin rectangle
+ 
+\begin_inset Formula $L\in\LkKs ks{\K}$
+\end_inset
+
+ is at least
+\begin_inset Formula 
+\[
+\frac{1}{2}k^{2}n^{4}\left(1-O\left(\frac{1}{k}+\frac{k}{n}+\frac{\K}{n}+\frac{s}{k\K}\right)\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\Psi\left(L\right)$
+\end_inset
+
+ be the set of rows of 
+\begin_inset Formula $L$
+\end_inset
+
+ involved in exactly 
+\begin_inset Formula $\K$
+\end_inset
+
+ intercalates.
+ We have 
+\begin_inset Formula $\left|\Psi\left(L\right)\right|\le4s/\K$
+\end_inset
+
+.
+ Now, choose rows 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ not in 
+\begin_inset Formula $\Psi\left(L\right)$
+\end_inset
+
+, in which we will create an intercalate.
+ There are 
+\begin_inset Formula 
+\[
+\left(k-\frac{4s}{\K}\right)\left(k-\frac{4s}{\K}-1\right)=k^{2}\left(1-O\left(\frac{s}{k\K}+\frac{1}{k}\right)\right)
+\]
+
+\end_inset
+
+ways to do this.
+ Next, choose distinct columns 
+\begin_inset Formula $x,\,y,\,x',\,y'$
+\end_inset
+
+.
+ To create an intercalate in columns 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $x'$
+\end_inset
+
+, let 
+\begin_inset Formula $z'$
+\end_inset
+
+ be the unique column with 
+\begin_inset Formula $L_{j,x}=L_{i,z'}$
+\end_inset
+
+, and let 
+\begin_inset Formula $z$
+\end_inset
+
+ be the column with 
+\begin_inset Formula $L_{j,x'}=L_{i,z}$
+\end_inset
+
+.
+ There are 
+\begin_inset Formula $n^{4}\left(1+O\left(1/n\right)\right)$
+\end_inset
+
+ ways to make these choices, but some of these do not give rise to a valid
+ twist operation.
+ Let 
+\begin_inset Formula $L'=\ro{\left(x\,y\,z\right)}i{\ro{\left(x'\,y'\,z'\right)}iL}$
+\end_inset
+
+; the possible violations are as follows.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The symbol 
+\begin_inset Formula $L_{i,x}$
+\end_inset
+
+ might already appear in column 
+\begin_inset Formula $y$
+\end_inset
+
+ (so that 
+\begin_inset Formula $L'$
+\end_inset
+
+ is not a Latin rectangle).
+ For any 
+\begin_inset Formula $x',y,y'$
+\end_inset
+
+ there are at most 
+\begin_inset Formula $k$
+\end_inset
+
+ choices of 
+\begin_inset Formula $x$
+\end_inset
+
+ with this property, so we should subtract 
+\begin_inset Formula $kn^{3}$
+\end_inset
+
+ for our upper bound.
+ Similarly 
+\begin_inset Formula $L_{i,x'}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{i,y}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{i,y'}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{i,z}$
+\end_inset
+
+ or 
+\begin_inset Formula $L_{i,z'}$
+\end_inset
+
+ might appear in column 
+\begin_inset Formula $y'$
+\end_inset
+
+, 
+\begin_inset Formula $z$
+\end_inset
+
+, 
+\begin_inset Formula $z'$
+\end_inset
+
+, 
+\begin_inset Formula $x$
+\end_inset
+
+ or 
+\begin_inset Formula $x'$
+\end_inset
+
+ respectively.
+ We should therefore subtract 
+\begin_inset Formula $6kn^{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We might have 
+\begin_inset Formula $z'\in\left\{ x',y,y',z\right\} $
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $x',y,y'$
+\end_inset
+
+ there are at most 
+\begin_inset Formula $4$
+\end_inset
+
+ choices of 
+\begin_inset Formula $x$
+\end_inset
+
+ that cause this.
+ Similarly we might have 
+\begin_inset Formula $z\in\left\{ x,y,y',z'\right\} $
+\end_inset
+
+.
+ We should subtract 
+\begin_inset Formula $8n^{3}$
+\end_inset
+
+ to compensate for both.
+\end_layout
+
+\begin_layout Itemize
+One of the positions 
+\begin_inset Formula $\left(i,x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(i,x'\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(i,y\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(i,y'\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(i,z\right)$
+\end_inset
+
+ or 
+\begin_inset Formula $\left(i,z'\right)$
+\end_inset
+
+ might already be involved in an intercalate.
+ We should subtract 
+\begin_inset Formula $6\K n^{3}$
+\end_inset
+
+ to compensate for this.
+\end_layout
+
+\begin_layout Itemize
+There might be an intercalate involving 
+\begin_inset Formula $\left(i,y\right)$
+\end_inset
+
+ in 
+\begin_inset Formula $L'$
+\end_inset
+
+.
+ This can only occur if for one of the 
+\begin_inset Formula $k-1$
+\end_inset
+
+ columns (
+\begin_inset Formula $w$
+\end_inset
+
+, say) in 
+\begin_inset Formula $L'$
+\end_inset
+
+ which contains the symbol 
+\begin_inset Formula $L_{i,x}$
+\end_inset
+
+ (in row 
+\begin_inset Formula $q\ne1$
+\end_inset
+
+, say), we have 
+\begin_inset Formula $L_{i,w}'=L_{q,y}'$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $x,x',y'$
+\end_inset
+
+ there are at most 
+\begin_inset Formula $k$
+\end_inset
+
+ choices of 
+\begin_inset Formula $y$
+\end_inset
+
+ for which this occurs.
+ Similarly, putting 
+\begin_inset Formula $L_{i,y}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{i,z}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{i,x'}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{i,y'}$
+\end_inset
+
+ or 
+\begin_inset Formula $L_{i,z'}$
+\end_inset
+
+ in position 
+\begin_inset Formula $\left(i,z\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(i,x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(i,y'\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(i,z'\right)$
+\end_inset
+
+ or 
+\begin_inset Formula $\left(i,x'\right)$
+\end_inset
+
+ respectively might create an intercalate involving that position (other
+ than the one given by positions 
+\begin_inset Formula $\left(i,x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(i,x'\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(j,x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(j,x'\right)$
+\end_inset
+
+).
+ So we should subtract 
+\begin_inset Formula $6kn^{3}$
+\end_inset
+
+ to compensate for this.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+If the above points are not violated then
+\series bold
+ 
+\series default
+we can use 
+\begin_inset Formula $i,x,y,z,x',y',z'$
+\end_inset
+
+ to do a simple twist, so the number of valid ways to simple twist is at
+ least
+\begin_inset Formula 
+\begin{align*}
+ & \frac{1}{2}k^{2}\left(1-O\left(\frac{s}{k\K}+\frac{1}{k}\right)\right)\left(n^{4}\left(1+O\left(\frac{1}{n}\right)\right)-O\left(\K n^{3}\right)-O\left(kn^{3}\right)-O\left(n^{3}\right)\right)\\
+ & \quad=\frac{1}{2}k^{2}n^{4}\left(1-O\left(\frac{1}{k}+\frac{k}{n}+\frac{\K}{n}+\frac{s}{k\K}\right)\right).
+\end{align*}
+
+\end_inset
+
+(We divide by 2 to compensate for the fact that we can exchange 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $x'$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $y'$
+\end_inset
+
+, 
+\begin_inset Formula $z$
+\end_inset
+
+ and 
+\begin_inset Formula $z'$
+\end_inset
+
+ to give the same twist).
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:backwards-rotate"
+
+\end_inset
+
+The number of good Latin rectangles 
+\begin_inset Formula $L\in\LkK k{\K}$
+\end_inset
+
+ from which we can twist to a specific good Latin rectangle 
+\begin_inset Formula $L'\in\LkKs ks{\K}$
+\end_inset
+
+ is at most 
+\begin_inset Formula $2sn^{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Twisting from 
+\begin_inset Formula $L$
+\end_inset
+
+ must have created one of the 
+\begin_inset Formula $s$
+\end_inset
+
+ intercalates in 
+\begin_inset Formula $L'$
+\end_inset
+
+ as its main intercalate, operating in one of its two rows.
+ The columns 
+\begin_inset Formula $\left\{ x,x'\right\} $
+\end_inset
+
+ are determined by the intercalate that was created, and there are at most
+ 
+\begin_inset Formula $n^{4}$
+\end_inset
+
+ choices of 
+\begin_inset Formula $y,y',z,z'$
+\end_inset
+
+ that could have been used.
+ So the number of Latin rectangles 
+\begin_inset Formula $L$
+\end_inset
+
+ that can twist to 
+\begin_inset Formula $L'$
+\end_inset
+
+ is at most 
+\begin_inset Formula $2sn^{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We can use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{lem:forwards-rotate,lem:backwards-rotate}
+\end_layout
+
+\end_inset
+
+ to give an upper and lower bound on the number of ways to simple twist
+ from a Latin rectangle in 
+\begin_inset Formula $\LkKs k{s-1}{\K}$
+\end_inset
+
+ to a Latin rectangle in 
+\begin_inset Formula $\LkKs ks{\K}$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $s=O\left(k^{2}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $k\ge\sqrt{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $k\le\K\le n$
+\end_inset
+
+, this gives 
+\begin_inset Formula 
+\[
+\frac{\left|\LkKs k{s-1}{\K}\right|}{\left|\LkKs ks{\K}\right|}\le\frac{s}{k^{2}/4}\exp\left(O\left(\frac{\K}{n}+\frac{k}{\K}\right)\right),
+\]
+
+\end_inset
+
+so for 
+\begin_inset Formula $t\ge0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\frac{\left|\LkKs k{k^{2}/4-s}{\K}\right|}{\left|\LkKs k{k^{2}/4}{\K}\right|}\le\prod_{r=0}^{s-1}\frac{\left|\LkKs k{k^{2}/4-r-1}{\K}\right|}{\left|\LkKs k{k^{2}/4-r}{\K}\right|}\le\prod_{r=0}^{s-1}\left(\left(\frac{k^{2}/4-r}{k^{2}/4}\right)\exp\left(O\left(\frac{\K}{n}+\frac{k}{\K}\right)\right)\right).
+\]
+
+\end_inset
+
+For 
+\begin_inset Formula $0\le2r\le k^{4}/4$
+\end_inset
+
+ we have 
+\begin_inset Formula $\left(k^{2}/4-r\right)/\left(k^{2}/4\right)=\exp$
+\end_inset
+
+
+\begin_inset Formula $\left(-\Theta\left(r/k^{2}\right)\right)$
+\end_inset
+
+; it follows that
+\begin_inset Formula 
+\begin{align*}
+\Pr\left(\randN=k^{2}/4-s\right) & \le\frac{\left|\LkKs k{k^{2}/4-s}{\K}\right|}{\left|\LkKs k{k^{2}/4}{\K}\right|}\\
+ & \le\exp\left(-\left(\sum_{r=0}^{s-1}\Theta\left(\frac{r}{k^{2}}\right)\right)+O\left(s\left(\frac{\K}{n}+\frac{k}{\K}\right)\right)\right)\\
+ & =\exp\left(-\Omega\left(\frac{s^{2}}{k^{2}}\right)+O\left(s\left(\frac{\K}{n}+\frac{k}{\K}\right)\right)\right).
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $t\ge Ck^{2}\left(\K/n+k/\K\right)$
+\end_inset
+
+ for large 
+\begin_inset Formula $C$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+\Pr\left(\randN<k^{2}/4-t\right)\le\sum_{s=t}^{k^{2}/4}e^{-\Omega\left(s^{2}/k^{2}\right)}=e^{-\Omega\left(t^{2}/k^{2}\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:squares-lower-tail"
+
+\end_inset
+
+Synthesis: Proof of
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Theorem}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:lower-tail"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this proof, the notation 
+\begin_inset Formula $a\ll b$
+\end_inset
+
+ means that 
+\begin_inset Formula $b/a$
+\end_inset
+
+ is sufficiently large (contrary to the usual meaning that 
+\begin_inset Formula $b/a\to\infty$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $\K$
+\end_inset
+
+ satisfy 
+\begin_inset Formula $\sqrt{n}\log n/\varepsilon\ll k\ll n/\log n$
+\end_inset
+
+, 
+\begin_inset Formula $k\log n\ll\K\le n$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon\gg\K/n+k/\K$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mathcal{E}$
+\end_inset
+
+ be the event that none of the first 
+\begin_inset Formula $k$
+\end_inset
+
+ rows of 
+\begin_inset Formula $\randL$
+\end_inset
+
+ are involved in more than 
+\begin_inset Formula $\K$
+\end_inset
+
+ intercalates, in the Latin rectangle induced by the first 
+\begin_inset Formula $k$
+\end_inset
+
+ rows.
+ By 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+ and the union bound (and symmetry considerations),
+\begin_inset Formula 
+\[
+\Pr\left(\mathcal{E}^{c}\right)=\exp\left(-\Omega\left(\frac{\K}{k}\log\frac{\K}{k}\right)\right).
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $\randNk$
+\end_inset
+
+ be the number of intercalates in the first 
+\begin_inset Formula $k$
+\end_inset
+
+ rows of 
+\begin_inset Formula $\randL$
+\end_inset
+
+.
+ For any fixed 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lower-bound-rectangles"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\left(\randNk<\left(1-\varepsilon/2\right)k^{2}/4\cond\mathcal{E}\right)=e^{-\Omega\left(\varepsilon^{2}k^{2}\right)}e^{O\left(n\log^{2}n\right)}=e^{-\Omega\left(\varepsilon^{2}k^{2}\right)}
+\]
+
+\end_inset
+
+We are assuming that 
+\begin_inset Formula $\varepsilon k\gg\sqrt{n}\log n$
+\end_inset
+
+ so 
+\begin_inset Formula $\varepsilon^{2}k^{2}\gg\left(\K/k\right)\log\left(\K/k\right)$
+\end_inset
+
+ and it follows that 
+\begin_inset Formula 
+\begin{equation}
+\Pr\left(\randNk<\left(1-\varepsilon/2\right)k^{2}/4\right)\le\exp\left(-\Omega\left(\frac{\K}{k}\log\frac{\K}{k}\right)\right)\label{eq:subrectangle-lower-tail}
+\end{equation}
+
+\end_inset
+
+unconditionally.
+ Now, fix some 
+\begin_inset Formula $M\in\NN$
+\end_inset
+
+ that is no more than say half of the reciprocal of the probability in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:subrectangle-lower-tail"
+
+\end_inset
+
+.
+ Choose 
+\begin_inset Formula $M$
+\end_inset
+
+ independent uniformly random sets of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows.
+ For a given pair of rows, the probability a uniformly random set of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows contains that pair is 
+\begin_inset Formula $p={n \choose k-2}/{n \choose k}=\left(k/n\right)^{2}\left(1+O\left(\frac{k}{n}\right)\right)$
+\end_inset
+
+.
+ By the Chernoff bound and the union bound, a.a.s.
+ every pair is contained in 
+\begin_inset Formula 
+\[
+Mp+O\left(\sqrt{Mp}\log n\right)=Mp\exp\left(1+\frac{\log n}{\sqrt{Mp}}\right)
+\]
+
+\end_inset
+
+of our 
+\begin_inset Formula $M$
+\end_inset
+
+ sets of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows.
+ Fix such a collection of sets of rows.
+ By the union bound and symmetry, except with the probability in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:subrectangle-lower-tail"
+
+\end_inset
+
+ each of our sets of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows contains at least 
+\begin_inset Formula $\left(1-\varepsilon\right)k^{2}/4$
+\end_inset
+
+ intercalates, so assuming 
+\begin_inset Formula $k/n,\,\log n/\sqrt{Mp}\ll\varepsilon$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{align*}
+\randN & \ge\frac{M\left(1-\varepsilon/2\right)k^{2}/4}{Mp\left(1+\log n/\sqrt{Mp}\right)}\\
+ & \ge\left(1-\varepsilon\right)\frac{n^{2}}{4}.
+\end{align*}
+
+\end_inset
+
+It remains to optimize for 
+\begin_inset Formula $k$
+\end_inset
+
+, 
+\begin_inset Formula $\K$
+\end_inset
+
+ and 
+\begin_inset Formula $M$
+\end_inset
+
+ (and determine for which 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ feasible values for 
+\begin_inset Formula $k,\K,M$
+\end_inset
+
+ exist).
+ We find that we can choose 
+\begin_inset Formula $k\asymp\sqrt{n}\log n/\varepsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $\K\asymp\varepsilon n$
+\end_inset
+
+, yielding a tail bound of 
+\begin_inset Formula $\exp\left(-\Omega\left(\varepsilon^{2}\sqrt{n}\right)\right)$
+\end_inset
+
+, provided 
+\begin_inset Formula $\varepsilon\gg\log^{1/3}n/n^{1/6}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[Proof of the a.a.s.
+ lower bound on $X$ in 
+\backslash
+ref{thm:upper+lower}]
+\end_layout
+
+\end_inset
+
+Fix 
+\begin_inset Formula $k$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\sqrt{n}\log n\ll k\ll n/\log n$
+\end_inset
+
+, and fix 
+\begin_inset Formula $\K$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $k\log n\ll\K\le n$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mathcal{E}$
+\end_inset
+
+ be the event that none of the first 
+\begin_inset Formula $k$
+\end_inset
+
+ rows of 
+\begin_inset Formula $\randL$
+\end_inset
+
+ are involved in more than 
+\begin_inset Formula $\K$
+\end_inset
+
+ intercalates, in the Latin rectangle induced by the first 
+\begin_inset Formula $k$
+\end_inset
+
+ rows.
+ By 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:two-rows-intercalate-tail"
+
+\end_inset
+
+ and the union bound (and symmetry considerations), 
+\begin_inset Formula $\Pr\left(\mathcal{E}^{c}\right)=n^{-\omega\left(1\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\randNk$
+\end_inset
+
+ be the number of intercalates in the first 
+\begin_inset Formula $k$
+\end_inset
+
+ rows of 
+\begin_inset Formula $\randL$
+\end_inset
+
+.
+ For any fixed 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lower-bound-rectangles"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\Pr\left(\randNk<\left(1-\varepsilon\right)k^{2}/4\cond\mathcal{E}\right)=e^{-\Omega\left(k^{2}\right)}e^{O\left(n\log^{2}n\right)}=e^{-\omega\left(n\log^{2}n\right)}=n^{-\omega\left(1\right)}.
+\]
+
+\end_inset
+
+It follows that 
+\begin_inset Formula $\Pr\left(\randNk<\left(1-\varepsilon\right)k^{2}/4\right)=n^{-\omega\left(1\right)}$
+\end_inset
+
+ unconditionally.
+\end_layout
+
+\begin_layout Standard
+Now, fix some large 
+\begin_inset Formula $M=n^{O\left(1\right)}$
+\end_inset
+
+ (say, 
+\begin_inset Formula $M=n^{2}$
+\end_inset
+
+), and choose 
+\begin_inset Formula $M$
+\end_inset
+
+ independent uniformly random sets of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows.
+ For a given pair of rows, the probability a uniformly random set of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows contains that pair is 
+\begin_inset Formula $p={n \choose k-2}/{n \choose k}=\left(k/n\right)^{2}\left(1+O\left(\frac{k}{n}\right)\right)$
+\end_inset
+
+.
+ By the Chernoff bound and the union bound, a.a.s.
+ every pair is contained in 
+\begin_inset Formula $Mp+O\left(\sqrt{Mp}\log n\right)\sim Mp$
+\end_inset
+
+ of our 
+\begin_inset Formula $M$
+\end_inset
+
+ sets of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows.
+ By the union bound and symmetry, a.a.s.
+ each of our sets of 
+\begin_inset Formula $k$
+\end_inset
+
+ rows contains at least 
+\begin_inset Formula $\left(1-\varepsilon\right)k^{2}/4$
+\end_inset
+
+ intercalates, so 
+\begin_inset Formula 
+\begin{align*}
+\randN & \ge\frac{M\left(1-\varepsilon\right)k^{2}/4}{\left(1+o\left(1\right)\right)Mp}\\
+ & \sim\left(1-\varepsilon\right)\frac{n^{2}}{4}.
+\end{align*}
+
+\end_inset
+
+If we optimize the above argument, the best a.a.s.
+ lower bound we can obtain is 
+\begin_inset Formula 
+\[
+\randN\ge\left(1+O\left(\frac{\log^{1/5}n}{n^{1/10}}\right)\right)\frac{n^{2}}{4}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{comment}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:discrepancy"
+
+\end_inset
+
+Proof of
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Theorem}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:weak-discrepancy"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Gd}[1]{\mathcal{G}_{#1}}
+{\boldsymbol{\mathcal{G}_{#1}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Gm}[1]{\mathcal{G}_{#1}^{*}}
+{\boldsymbol{\mathcal{G}_{#1}^{*}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\randG}{\boldsymbol{G}}
+{\boldsymbol{\boldsymbol{G}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\randB}{\boldsymbol{B}}
+{\boldsymbol{\boldsymbol{B}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\GGB}[2]{\BB\left(#1,#2\right)}
+{\boldsymbol{\BB\left(#1,#2\right)}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fix a box 
+\begin_inset Formula $T=I\times X\times Q$
+\end_inset
+
+ (there are 
+\begin_inset Formula $\left(2^{n}\right)^{3}=8^{n}$
+\end_inset
+
+ possible choices).
+ We will show that the bound on 
+\begin_inset Formula $N_{T}\left(\randL\right)$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:weak-discrepancy"
+
+\end_inset
+
+ holds with probability 
+\begin_inset Formula $o\left(8^{-n}\right)$
+\end_inset
+
+, which will allow us to apply the union bound over choices of 
+\begin_inset Formula $T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For a Latin square 
+\begin_inset Formula $L$
+\end_inset
+
+, we define a bipartite graph 
+\begin_inset Formula $G_{Q}\left(L\right)$
+\end_inset
+
+ as follows.
+ Both parts have 
+\begin_inset Formula $n$
+\end_inset
+
+ vertices (we abuse notation and say the vertex set is 
+\begin_inset Formula $\range n\sqcup\range n$
+\end_inset
+
+); one of the parts is identified with the set of rows of the Latin square
+ and the other part is identified with the set of columns.
+ For each row 
+\begin_inset Formula $i$
+\end_inset
+
+ and column 
+\begin_inset Formula $x$
+\end_inset
+
+ such that 
+\begin_inset Formula $L_{i,x}\in Q$
+\end_inset
+
+, we put an edge between 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ in 
+\begin_inset Formula $G_{Q}\left(L\right)$
+\end_inset
+
+.
+ Now, the number of ones 
+\begin_inset Formula $N_{T}\left(L\right)$
+\end_inset
+
+ in 
+\begin_inset Formula $T$
+\end_inset
+
+ is just the number of edges 
+\begin_inset Formula $e_{G_{Q}\left(L\right)}\left(I,X\right)$
+\end_inset
+
+ between 
+\begin_inset Formula $I$
+\end_inset
+
+ and 
+\begin_inset Formula $X$
+\end_inset
+
+ in 
+\begin_inset Formula $G_{Q}\left(L\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Gd d$
+\end_inset
+
+ be the set of 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bipartite graphs on 
+\begin_inset Formula $\range n\sqcup\range n$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $G\in\Gd{\left|Q\right|}$
+\end_inset
+
+, let 
+\begin_inset Formula $\left|\L^{*}\left(G\right)\right|$
+\end_inset
+
+ be the number of of Latin squares 
+\begin_inset Formula $L$
+\end_inset
+
+ with 
+\begin_inset Formula $G_{Q}\left(L\right)=G$
+\end_inset
+
+.
+ We can use standard bounds on the permanent to prove that 
+\begin_inset Formula $\left|\L^{*}\left(G\right)\right|$
+\end_inset
+
+ does not vary very much with with 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:permanent"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+For a set of symbols 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|Q\right|$
+\end_inset
+
+-regular bipartite graphs 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $G'$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\frac{\left|\L^{*}\left(G\right)\right|}{\left|\L^{*}\left(G'\right)\right|}\le e^{O\left(n\log^{2}n\right)}
+\]
+
+\end_inset
+
+uniformly over 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+So, 
+\begin_inset Formula $G_{Q}\left(\randL\right)$
+\end_inset
+
+ is not too far from the uniform distribution on 
+\begin_inset Formula $\Gd{\left|Q\right|}$
+\end_inset
+
+, and events that hold with very high probability for a uniformly random
+ 
+\begin_inset Formula $\randG\in\Gd{\left|Q\right|}$
+\end_inset
+
+ also hold with very high probability for 
+\begin_inset Formula $G_{Q}\left(\randL\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It is possible to obtain discrepancy tail bounds for random regular (bipartite)
+ graphs using switchings of the type in 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem~2.2"
+key "KSVW01"
+
+\end_inset
+
+.
+ Such a bound would nearly provide the result we are after (although there
+ would be difficulties for very dense graphs).
+ However, at the range of probabilities we are interested in, regular bipartite
+ graphs comprise a non-negligible proportion of all bipartite graphs with
+ the appropriate number of edges, and (modulo a deep enumeration theorem
+ for regular bipartite graphs) this enables a simpler approach.
+ Let 
+\begin_inset Formula $\GGB np$
+\end_inset
+
+ be the random graph distribution on the vertex set 
+\begin_inset Formula $\range n\sqcup\range n$
+\end_inset
+
+, where each of the 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+ possible edges between the parts are present with independent probability
+ 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:Gnp-regular"
+
+\end_inset
+
+Let 
+\begin_inset Formula $p=d/n$
+\end_inset
+
+.
+ The probability a random graph 
+\begin_inset Formula $\randB\in\GGB np$
+\end_inset
+
+ is 
+\begin_inset Formula $d$
+\end_inset
+
+-regular is 
+\begin_inset Formula $e^{-O\left(n\log n\right)}$
+\end_inset
+
+.
+ Also, conditioning on this event gives the uniform distribution on 
+\begin_inset Formula $\Gd d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To prove 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gnp-regular"
+
+\end_inset
+
+ we will use the following theorem of Wormald and Liebenau [?].
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:regular-enumeration"
+
+\end_inset
+
+Let 
+\begin_inset Formula $p=d/n$
+\end_inset
+
+.
+ The number of 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bicoloured graphs with 
+\begin_inset Formula $2n$
+\end_inset
+
+ vertices is asymptotic to
+\begin_inset Formula 
+\[
+\left(p^{p}\left(1-p\right)^{1-p}\right)^{n^{2}}{n \choose pn}^{2n}n\sqrt{2\pi p\left(1-p\right)}e^{-1/2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gnp-regular"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The probability 
+\begin_inset Formula $\randB$
+\end_inset
+
+ has exactly 
+\begin_inset Formula $dn=pn^{2}$
+\end_inset
+
+ edges is 
+\begin_inset Formula 
+\[
+{n^{2} \choose pn^{2}}p^{pn^{2}}\left(1-p\right)^{pn^{2}}\asymp\frac{1}{n\sqrt{p\left(1-p\right)}}.
+\]
+
+\end_inset
+
+(here we used Stirling's approximation).
+ By symmetry, each graph with 
+\begin_inset Formula $dn$
+\end_inset
+
+ edges is equally likely.
+ By 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:regular-enumeration"
+
+\end_inset
+
+, the fraction of such graphs which are 
+\begin_inset Formula $d$
+\end_inset
+
+-regular is
+\begin_inset Formula 
+\begin{align*}
+ & \left(p^{p}\left(1-p\right)^{1-p}\right)^{n^{2}}{n \choose pn}^{2n}n\sqrt{2\pi p\left(1-p\right)}e^{-1/2}\left/{n^{2} \choose pn^{2}}\right.\\
+ & \qquad=\left(p\left(1-p\right)n\right)^{-\left(2+o\left(1\right)\right)n}\le e^{-O\left(n\log n\right)}.\tag*{\qedhere}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, discrepancy in 
+\begin_inset Formula $\GGB np$
+\end_inset
+
+ (for 
+\begin_inset Formula $p=\left|Q\right|/n$
+\end_inset
+
+) is very easy to study.
+ Indeed, for 
+\begin_inset Formula $\randB\in\GGB np$
+\end_inset
+
+ the law of 
+\begin_inset Formula $e_{\randB}\left(I,X\right)$
+\end_inset
+
+ is the binomial distribution 
+\begin_inset Formula $\Bin\left(\left|I\right|\left|X\right|,p\right)$
+\end_inset
+
+ with mean 
+\begin_inset Formula $\left|I\right|\left|X\right|p=\vol T/n$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\randG\in\Gd{\left|Q\right|}$
+\end_inset
+
+ be a uniformly random 
+\begin_inset Formula $\left|Q\right|$
+\end_inset
+
+-regular bipartite graph.
+ By a binomial large deviation inequality (for example 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Theorem~2.1"
+key "JLR00"
+
+\end_inset
+
+), 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:Gnp-regular"
+
+\end_inset
+
+, we have
+\begin_inset Formula 
+\begin{align*}
+\Pr\left(\left|N_{T}\left(\randL\right)-\frac{\vol T}{n}\right|>t\right) & =\Pr\left(\left|e_{G_{Q}\left(\randL\right)}\left(I,X\right)-\frac{\vol T}{n}\right|>t\right)\\
+ & \le\Pr\left(\left|e_{\randG}\left(I,X\right)-\frac{\vol T}{n}\right|>t\right)e^{O\left(n\log^{2}n\right)}\\
+ & \le\Pr\left(\left|e_{\randB}\left(I,X\right)-\frac{\vol T}{n}\right|>t\right)e^{O\left(n\log^{2}n+n\log n\right)}\\
+ & =\exp\left(-\Omega\left(\frac{t^{2}}{\vol T/n+t}\right)+O\left(n\log^{2}n\right)\right).
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $t$
+\end_inset
+
+ is a large multiple of 
+\begin_inset Formula $\sqrt{\vol T}\log n+n\log^{2}n$
+\end_inset
+
+, then this probability is 
+\begin_inset Formula $e^{-\Omega\left(n\log^{2}n\right)}=o\left(8^{-n}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:permanent"
+
+\end_inset
+
+Proofs of
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Proposition}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+ and
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Proposition}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can interpret a Latin square as a 1-factorization of 
+\begin_inset Formula $K_{n,n}$
+\end_inset
+
+ (that is, an edge colouring with 
+\begin_inset Formula $n$
+\end_inset
+
+ colours).
+ The correspondence is that the edge between vertex 
+\begin_inset Formula $i$
+\end_inset
+
+ in the first part and vertex 
+\begin_inset Formula $x$
+\end_inset
+
+ in the second part receives colour 
+\begin_inset Formula $q$
+\end_inset
+
+ if 
+\begin_inset Formula $L_{i,x}=q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Phi\left(G\right)$
+\end_inset
+
+ be the number of 1-factorizations of a graph 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ Schrijver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sch98"
+
+\end_inset
+
+ proved a lower bound on 
+\begin_inset Formula $\Phi\left(G\right)$
+\end_inset
+
+ for regular bipartite graphs, and we can obtain an upper bound by iterating
+ Br
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+egman's theorem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bre73"
+
+\end_inset
+
+.
+ Both bounds are summarized in the following theorem.
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be a 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bipartite graph on 
+\begin_inset Formula $n+n$
+\end_inset
+
+ vertices.
+ Then 
+\begin_inset Formula 
+\[
+\left(\frac{d!^{2}}{d^{d}}\right)^{n}\le\Phi\left(G\right)\le\prod_{k=1}^{d}\left(k!\right)^{n/k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Stirling's approximation gives 
+\begin_inset Formula $\Phi\left(G\right)\ge\left(\Omega\left(d\left(d/e^{2}\right)^{d}\right)\right)^{n}$
+\end_inset
+
+, and additionally using the approximation 
+\begin_inset Formula $H_{k}:=\sum_{i=1}^{k}\frac{1}{i}=\Theta\left(\log k\right)$
+\end_inset
+
+ for the harmonic series,
+\begin_inset Formula 
+\[
+\Phi\left(G\right)\le\prod_{k=1}^{d}\left(O\left(\sqrt{k}\right)\right)^{n/k}\left(\frac{k}{e}\right)^{n}\le d^{O\left(n\log d\right)}\left(\frac{d!}{e^{d}}\right)^{n}\le e^{O\left(n\log^{2}d\right)}\left(O\left(\sqrt{d}\left(d/e^{2}\right)^{d}\right)\right)^{n}.
+\]
+
+\end_inset
+
+We have the following as a consequence.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:factorization-bounds"
+
+\end_inset
+
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $G'$
+\end_inset
+
+ be 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bipartite graphs on 
+\begin_inset Formula $n+n$
+\end_inset
+
+ vertices.
+ Then
+\begin_inset Formula 
+\[
+\frac{\Phi\left(G\right)}{\Phi\left(G'\right)}\le e^{O\left(n\log^{2}d\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, in the notation of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+, note that 
+\begin_inset Formula $\Lext G$
+\end_inset
+
+ is the number of 1-factorizations of 
+\begin_inset Formula $G$
+\end_inset
+
+, times the number of 1-factorizations of its complement.
+ For 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+, we need to exchange the role of symbols and rows in our correspondence
+ between Latin squares and 1-factorizations of 
+\begin_inset Formula $K_{n,n}$
+\end_inset
+
+: put an edge coloured 
+\begin_inset Formula $i$
+\end_inset
+
+ between 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ if 
+\begin_inset Formula $L_{i,x}=q$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\Lext L$
+\end_inset
+
+ is the number of 1-factorizations in the complement of a certain 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bipartite graph, which is an 
+\begin_inset Formula $\left(n-d\right)$
+\end_inset
+
+-regular bipartite graph.
+ Therefore both 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+ follow from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:factorization-bounds"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Concluding remarks
+\end_layout
+
+\begin_layout Standard
+We have shown that the number of intercalates 
+\begin_inset Formula $\randN$
+\end_inset
+
+ in a uniformly random 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ Latin square a.a.s.
+ satisfies 
+\begin_inset Formula $\left(1-o\left(1\right)\right)n^{2}/4\le\randN\le fn^{2}$
+\end_inset
+
+, for any 
+\begin_inset Formula $f\to\infty$
+\end_inset
+
+, and we showed that 
+\begin_inset Formula $\left(1+o\left(1\right)\right)n^{2}/4\le\E\randN\le\left(1+o\left(1\right)\right)n^{2}/2$
+\end_inset
+
+.
+ In doing so we obtained an exponentially-decaying estimate for the lower
+ tail of 
+\begin_inset Formula $\randN$
+\end_inset
+
+ and an exponential upper-tail estimate for the number of intercalates in
+ two fixed rows.
+ We also proved that random Latin squares typically have low discrepancy.
+\end_layout
+
+\begin_layout Standard
+There are a number of related problems that remain open.
+ First, there is the task of reducing the a.a.s.
+ upper bound on 
+\begin_inset Formula $\randN$
+\end_inset
+
+ to 
+\begin_inset Formula $\left(1+o\left(1\right)\right)n^{2}/4$
+\end_inset
+
+ or at least to 
+\begin_inset Formula $O\left(n^{2}\right)$
+\end_inset
+
+.
+ The most obvious way of approaching this would be to imitate our proof
+ of the lower bound, and show that for some 
+\begin_inset Formula $k$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\sqrt{n}\log n\ll k$
+\end_inset
+
+, with very high probability a random 
+\begin_inset Formula $k\times n$
+\end_inset
+
+ Latin rectangle does not have too many intercalates.
+ The tools from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MW99"
+
+\end_inset
+
+ can accomplish this conditioned on the nonexistence of 
+\begin_inset Quotes eld
+\end_inset
+
+problematic configurations
+\begin_inset Quotes erd
+\end_inset
+
+ of intercalates, but showing these configurations are unlikely appears
+ to be a surprisingly difficult task.
+\end_layout
+
+\begin_layout Standard
+Second, there is the problem of understanding the existence and number of
+ substructures other than intercalates in random Latin squares.
+ McKay and Wanless 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MW99"
+
+\end_inset
+
+ conjecture that the number of 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ Latin subsquares should have expectation 
+\begin_inset Formula $\Theta\left(1\right)$
+\end_inset
+
+, and similar logic would suggest that a.a.s.
+ there are no Latin subsquares of larger order.
+ A proof of either of these facts would be interesting.
+ One can also ask about Latin subrectangles, or partial Latin subrectangles,
+ of various kinds.
+\end_layout
+
+\begin_layout Standard
+Third, there is the task of making further progress towards 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "conj:linial-luria"
+
+\end_inset
+
+.
+ Even a slight improvement over our 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:weak-discrepancy"
+
+\end_inset
+
+ would be interesting, because such an improvement would have to overcome
+ the error introduced by theorems of the type in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:permanent"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, one might hope to prove results of the type in this paper for more
+ general types of random designs, such as Latin cubes or Steiner triple
+ systems.
+ Unfortunately, results of the type in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:permanent"
+
+\end_inset
+
+ are not readily available in these cases, which considerably limits the
+ tools available.
+ The breakthrough methods of Keevash 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kee14,Kee15"
+
+\end_inset
+
+ for completing quasirandom partial designs may be useful.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
