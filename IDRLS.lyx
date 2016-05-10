@@ -844,9 +844,8 @@ intercalate
 \end_layout
 
 \begin_layout Abstract
-In addition, we give a short proof of an asymptotically almost sure upper
- bound on the discrepancy of a random Latin square.
- This constitutes progress towards a conjecture of Linial and Luria.
+In addition, we discuss a problem of Linial and Luria on low-discrepancy
+ Latin squares.
 \end_layout
 
 \begin_layout Section
@@ -880,34 +879,21 @@ symbols
 \emph default
 ), such that each row and column contains each symbol exactly once.
  Latin squares are a fundamental type of combinatorial design, and have
- many essentially equivalent formulations (see for example 
+ many essentially equivalent formulations.
+ In their various guises, Latin squares play an important role in many contexts,
+ ranging from group theory, to projective geometry, to experimental design,
+ to the theory of error-correcting codes.
+ An introduction to the vast subject of Latin squares can be found in 
 \begin_inset CommandInset citation
 LatexCommand cite
-after "Section~III, Theorem 1.11"
-key "CD06"
+key "DK15"
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{comment}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 Since Erd
 \begin_inset ERT
 status open
@@ -941,31 +927,37 @@ key "ER59"
 
 \end_inset
 
- there has been an astounding volume of work on random combinatorial structures
- of all kinds, but still very little is known about statistical properties
- of random designs.
- Latin squares are perhaps the simplest 
+ and Erd
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
-end{comment}
+H o
 \end_layout
 
 \end_inset
 
+s' popularization of the probabilistic method, there has been an explosion
+ of interest in random combinatorial structures of all kinds, and of course
+ it is natural to consider random Latin squares.
+ In fact random Latin squares are of more than theoretical interest, due
+ to the importance of randomization in experimental design (see for example
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DK91"
 
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
-The uniform probability distribution over the set 
+The simplest and most natural notion of a random Latin square is the uniform
+ probability distribution over the set 
 \begin_inset Formula $\L$
 \end_inset
 
@@ -973,8 +965,27 @@ The uniform probability distribution over the set
 \begin_inset Formula $n\times n$
 \end_inset
 
- Latin squares is poorly understood, due to the rigidity of a Latin square
- and the lack of any independence or recursive structure.
+ Latin squares.
+ Random Latin squares are very difficult to study: they lack independence
+ or any kind of recursive structure, which rule out many of the techniques
+ used to study binomial random graphs and random permutations, and there
+ is little freedom to make local changes, which limits the use of 
+\begin_inset Quotes eld
+\end_inset
+
+switching
+\begin_inset Quotes erd
+\end_inset
+
+ techniques often used in the study of random regular graphs (see for example
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KSVW01"
+
+\end_inset
+
+).
  It is not even known how to efficiently generate a uniformly random 
 \begin_inset Formula $\randL\in\L$
 \end_inset
@@ -1000,12 +1011,20 @@ key "Pitt97"
 
  which converge to the uniform distribution, but it is not known if these
  Markov chains converge rapidly.
- One obstacle to empirically testing the speed of convergence is that little
- is known about the likely structure of a random Latin square.
 \end_layout
 
 \begin_layout Standard
-An 
+Some of the earlier work on random Latin squares concerned algebraic properties
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cam92,HJ96"
+
+\end_inset
+
+).
+ In this paper we are more interested in structural questions.
+ An 
 \emph on
 intercalate
 \emph default
@@ -1035,7 +1054,7 @@ intercalate
 \end_inset
 
 .
- One important statistic of a Latin square 
+ An important statistic of a Latin square 
 \begin_inset Formula $L$
 \end_inset
 
@@ -1263,8 +1282,8 @@ Let
 
 \end_inset
 
-Second, for any fixed 
-\begin_inset Formula $\varepsilon>0$
+Second, for some 
+\begin_inset Formula $\varepsilon=O\left(\log^{1/3}n/n^{1/6}\right)\to0$
 \end_inset
 
  and any function 
@@ -1480,13 +1499,11 @@ reference "conj:linial-luria"
 \end_inset
 
 .
- We are able to show that random Latin squares a.a.s.
- have low discrepancy, although we are not able to reach the optimal conjectured
- discrepancy in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "conj:linial-luria"
-
+ We are able to give a simple argument (encompassing Linial and Luria's
+ aforementioned result), showing that random Latin squares a.a.s.
+ have quite low discrepancy, especially when considering boxes of volume
+ 
+\begin_inset Formula $\Omega\left(n^{2}\right)$
 \end_inset
 
 .
@@ -6526,7 +6543,7 @@ name "sec:permanent"
 
 \end_inset
 
-Proofs of
+Appendix: Proofs of
 \begin_inset ERT
 status open
 
@@ -6641,24 +6658,19 @@ key "Bre73"
 \end_inset
 
 .
- Both bounds are summarized in the following theorem.
-\end_layout
-
-\begin_layout Theorem
-Let 
-\begin_inset Formula $G$
-\end_inset
-
- be a 
+ Summarizing both bounds, for a 
 \begin_inset Formula $d$
 \end_inset
 
--regular bipartite graph on 
+-regular bipartite graph 
+\begin_inset Formula $G$
+\end_inset
+
+ on 
 \begin_inset Formula $n+n$
 \end_inset
 
- vertices.
- Then 
+ vertices,
 \begin_inset Formula 
 \[
 \left(\frac{d!^{2}}{d^{d}}\right)^{n}\le\Phi\left(G\right)\le\prod_{k=1}^{d}\left(k!\right)^{n/k}.
@@ -6666,10 +6678,6 @@ Let
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Stirling's approximation gives 
 \begin_inset Formula $\Phi\left(G\right)\ge\left(\Omega\left(d\left(d/e^{2}\right)^{d}\right)\right)^{n}$
 \end_inset
@@ -6842,7 +6850,8 @@ We have shown that the number of intercalates
 
  and an exponential upper-tail estimate for the number of intercalates in
  two fixed rows.
- We also proved that random Latin squares typically have low discrepancy.
+ We also proved that random Latin squares typically have relatively low
+ discrepancy.
 \end_layout
 
 \begin_layout Standard
@@ -6882,7 +6891,7 @@ key "MW99"
 
 \end_inset
 
- can accomplish this conditioned on the nonexistence of 
+ can accomplish this conditioned on the nonexistence of certain 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6935,8 +6944,8 @@ reference "thm:weak-discrepancy"
 
 \end_inset
 
- would be interesting, because such an improvement would have to overcome
- the error introduced by theorems of the type in 
+ would be interesting, because such an improvement would have to avoid the
+ error introduced by theorems of the type in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:permanent"
@@ -6947,9 +6956,8 @@ reference "sec:permanent"
 \end_layout
 
 \begin_layout Standard
-Finally, one might hope to prove results of the type in this paper for more
- general types of random designs, such as Latin cubes or Steiner triple
- systems.
+Finally, it would be interesting to prove analogous results for more general
+ types of random designs, such as Latin cubes or Steiner triple systems.
  Unfortunately, results of the type in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6958,22 +6966,14 @@ reference "sec:permanent"
 \end_inset
 
  are not readily available in these cases, which considerably limits the
- tools available.
- The breakthrough methods of Keevash 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Kee14,Kee15"
-
-\end_inset
-
- for completing quasirandom partial designs may be useful.
+ (already very limited) tools at one's disposal.
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "references"
-options "plain"
+options "amsplain_initials"
 
 \end_inset
 
