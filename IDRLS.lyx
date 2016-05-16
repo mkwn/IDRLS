@@ -6,10 +6,12 @@
 \begin_preamble
 \date{}
 
+\usepackage{appendix}
+
 % cleveref allows \ref{thm:asdf} instead of Theorem~\ref{thm:asdf}
 \usepackage[nameinlink,capitalise,noabbrev]{cleveref}
 \AtBeginDocument{\renewcommand{\ref}[1]{\cref{#1}}}
-
+\crefname{appsec}{Appendix}{Appendices}
 \creflabelformat{enumi}{#2textup{#1}#3}
 
 \usepackage[parfill]{parskip}
@@ -841,10 +843,7 @@ intercalate
  This significantly improves the previous best lower and upper bounds.
  We also give an upper tail bound for the number of intercalates in two
  fixed rows of a random Latin square.
-\end_layout
-
-\begin_layout Abstract
-In addition, we discuss a problem of Linial and Luria on low-discrepancy
+ In addition, we discuss a problem of Linial and Luria on low-discrepancy
  Latin squares.
 \end_layout
 
@@ -940,9 +939,9 @@ H o
 
 \end_inset
 
-s' popularization of the probabilistic method, there has been an explosion
- of interest in random combinatorial structures of all kinds, and of course
- it is natural to consider random Latin squares.
+s' popularization of the probabilistic method, there has been great interest
+ in random combinatorial structures of all kinds, and of course it is natural
+ to consider random Latin squares.
  In fact random Latin squares are of more than theoretical interest, due
  to the importance of randomization in experimental design (see for example
  
@@ -1282,8 +1281,8 @@ Let
 
 \end_inset
 
-Second, for some 
-\begin_inset Formula $\varepsilon=O\left(\log^{1/3}n/n^{1/6}\right)\to0$
+Second, for any fixed 
+\begin_inset Formula $\varepsilon>0$
 \end_inset
 
  and any function 
@@ -1320,8 +1319,8 @@ reference "sec:upper+lower"
 \end_layout
 
 \begin_layout Standard
-A different property that we believe typically holds for random Latin squares
- is that they have 
+A different property that likely holds a.a.s.
+ for random Latin squares is that they have 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1486,7 +1485,15 @@ reference "conj:linial-luria"
 
 .
  Linial and Luria proved the weaker result that a.a.s.
- every empty box 
+ every 
+\begin_inset Quotes eld
+\end_inset
+
+empty
+\begin_inset Quotes erd
+\end_inset
+
+ box 
 \begin_inset Formula $T$
 \end_inset
 
@@ -1812,19 +1819,6 @@ reference "thm:upper+lower"
 
  this in turn implies the lower bound on 
 \begin_inset Formula $\E\randN$
-\end_inset
-
-.
- We expect that 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "thm:lower-tail"
-
-\end_inset
-
- is far from optimal, and that the correct order of magnitude of the lower
- tail probability is 
-\begin_inset Formula $\exp\left(-\Omega\left(\varepsilon^{2}n^{2}\right)\right)$
 \end_inset
 
 .
@@ -5505,7 +5499,7 @@ name "sec:squares-lower-tail"
 
 \end_inset
 
-Synthesis: Proof of
+Proof of
 \begin_inset ERT
 status open
 
@@ -6371,15 +6365,19 @@ Let
 \end_inset
 
 .
- The number of 
+ The number 
+\begin_inset Formula $\left|\Gd d\right|$
+\end_inset
+
+ of 
 \begin_inset Formula $d$
 \end_inset
 
--regular bicoloured graphs with 
-\begin_inset Formula $2n$
+-regular bipartite graphs on 
+\begin_inset Formula $\range n\sqcup\range n$
 \end_inset
 
- vertices is asymptotic to
+ is asymptotic to
 \begin_inset Formula 
 \[
 \left(p^{p}\left(1-p\right)^{1-p}\right)^{n^{2}}{n \choose pn}^{2n}n\sqrt{2\pi p\left(1-p\right)}e^{-1/2}.
@@ -6534,286 +6532,6 @@ If
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:permanent"
-
-\end_inset
-
-Appendix: Proofs of
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{}{ Proposition}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-to-latin-squares"
-
-\end_inset
-
- and
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{}{ Proposition}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-graphs-to-latin-squares"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We can interpret a Latin square as a 1-factorization of 
-\begin_inset Formula $K_{n,n}$
-\end_inset
-
- (that is, an edge colouring with 
-\begin_inset Formula $n$
-\end_inset
-
- colours).
- The correspondence is that the edge between vertex 
-\begin_inset Formula $i$
-\end_inset
-
- in the first part and vertex 
-\begin_inset Formula $x$
-\end_inset
-
- in the second part receives colour 
-\begin_inset Formula $q$
-\end_inset
-
- if 
-\begin_inset Formula $L_{i,x}=q$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\Phi\left(G\right)$
-\end_inset
-
- be the number of 1-factorizations of a graph 
-\begin_inset Formula $G$
-\end_inset
-
-.
- Schrijver 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Sch98"
-
-\end_inset
-
- proved a lower bound on 
-\begin_inset Formula $\Phi\left(G\right)$
-\end_inset
-
- for regular bipartite graphs, and we can obtain an upper bound by iterating
- Br
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-egman's theorem 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bre73"
-
-\end_inset
-
-.
- Summarizing both bounds, for a 
-\begin_inset Formula $d$
-\end_inset
-
--regular bipartite graph 
-\begin_inset Formula $G$
-\end_inset
-
- on 
-\begin_inset Formula $n+n$
-\end_inset
-
- vertices,
-\begin_inset Formula 
-\[
-\left(\frac{d!^{2}}{d^{d}}\right)^{n}\le\Phi\left(G\right)\le\prod_{k=1}^{d}\left(k!\right)^{n/k}.
-\]
-
-\end_inset
-
-Stirling's approximation gives 
-\begin_inset Formula $\Phi\left(G\right)\ge\left(\Omega\left(d\left(d/e^{2}\right)^{d}\right)\right)^{n}$
-\end_inset
-
-, and additionally using the approximation 
-\begin_inset Formula $H_{k}:=\sum_{i=1}^{k}\frac{1}{i}=\Theta\left(\log k\right)$
-\end_inset
-
- for the harmonic series,
-\begin_inset Formula 
-\[
-\Phi\left(G\right)\le\prod_{k=1}^{d}\left(O\left(\sqrt{k}\right)\right)^{n/k}\left(\frac{k}{e}\right)^{n}\le d^{O\left(n\log d\right)}\left(\frac{d!}{e^{d}}\right)^{n}\le e^{O\left(n\log^{2}d\right)}\left(O\left(\sqrt{d}\left(d/e^{2}\right)^{d}\right)\right)^{n}.
-\]
-
-\end_inset
-
-We have the following as a consequence.
-\end_layout
-
-\begin_layout Proposition
-\begin_inset CommandInset label
-LatexCommand label
-name "prop:factorization-bounds"
-
-\end_inset
-
-Let 
-\begin_inset Formula $G$
-\end_inset
-
- and 
-\begin_inset Formula $G'$
-\end_inset
-
- be 
-\begin_inset Formula $d$
-\end_inset
-
--regular bipartite graphs on 
-\begin_inset Formula $n+n$
-\end_inset
-
- vertices.
- Then
-\begin_inset Formula 
-\[
-\frac{\Phi\left(G\right)}{\Phi\left(G'\right)}\le e^{O\left(n\log^{2}d\right)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now, in the notation of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-graphs-to-latin-squares"
-
-\end_inset
-
-, note that 
-\begin_inset Formula $\Lext G$
-\end_inset
-
- is the number of 1-factorizations of 
-\begin_inset Formula $G$
-\end_inset
-
-, times the number of 1-factorizations of its complement.
- For 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-to-latin-squares"
-
-\end_inset
-
-, we need to exchange the role of symbols and rows in our correspondence
- between Latin squares and 1-factorizations of 
-\begin_inset Formula $K_{n,n}$
-\end_inset
-
-: put an edge coloured 
-\begin_inset Formula $i$
-\end_inset
-
- between 
-\begin_inset Formula $x$
-\end_inset
-
- and 
-\begin_inset Formula $q$
-\end_inset
-
- if 
-\begin_inset Formula $L_{i,x}=q$
-\end_inset
-
-.
- Then, 
-\begin_inset Formula $\Lext L$
-\end_inset
-
- is the number of 1-factorizations in the complement of a certain 
-\begin_inset Formula $d$
-\end_inset
-
--regular bipartite graph, which is an 
-\begin_inset Formula $\left(n-d\right)$
-\end_inset
-
--regular bipartite graph.
- Therefore both 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-graphs-to-latin-squares"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-to-latin-squares"
-
-\end_inset
-
- follow from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:factorization-bounds"
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Section
@@ -6974,6 +6692,332 @@ reference "sec:permanent"
 LatexCommand bibtex
 bibfiles "references"
 options "amsplain_initials"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{appendices}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+crefalias{section}{appsec}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:permanent"
+
+\end_inset
+
+Proofs of
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Proposition}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+ and
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{}{ Proposition}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can interpret a Latin square as a 1-factorization of 
+\begin_inset Formula $K_{n,n}$
+\end_inset
+
+ (that is, an edge colouring with 
+\begin_inset Formula $n$
+\end_inset
+
+ colours).
+ The correspondence is that the edge between vertex 
+\begin_inset Formula $i$
+\end_inset
+
+ in the first part and vertex 
+\begin_inset Formula $x$
+\end_inset
+
+ in the second part receives colour 
+\begin_inset Formula $q$
+\end_inset
+
+ if 
+\begin_inset Formula $L_{i,x}=q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\phi\left(G\right)$
+\end_inset
+
+ be the number of 1-factors (perfect matchings) of a graph 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ The Egorychev-Falikman theorem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ego81,Fal81"
+
+\end_inset
+
+ (previously known as the Van der Waerden conjecture) and Br
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+egman's theorem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bre73"
+
+\end_inset
+
+ (previously known as Minc's conjecture) give lower and upper bounds on
+ 
+\begin_inset Formula $\phi\left(G\right)$
+\end_inset
+
+ for a 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bipartite graph 
+\begin_inset Formula $G$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+n!\left(\frac{d}{n}\right)^{n}\le\phi\left(G\right)\le\left(d!\right)^{n/d}.
+\]
+
+\end_inset
+
+We can therefore give bounds on the number of ways to choose a 1-factorization
+ by choosing its 1-factors one-by-one:
+\begin_inset Formula 
+\[
+\prod_{k=1}^{d}n\left(\frac{k}{n}\right)^{n}\le\Phi\left(G\right)\le\prod_{k=1}^{d}\left(k!\right)^{n/k}.
+\]
+
+\end_inset
+
+Stirling's inequality gives
+\begin_inset Formula 
+\[
+\frac{\left(k!\right)^{n/d}}{n!\left(k/n\right)^{n}}\le\frac{\left(\Theta\left(\sqrt{k}\left(k/e\right)^{k}\right)\right)^{n/k}}{\left(n/e\right)^{n}\left(k/n\right)^{n}}\le\exp\left(O\left(\frac{n\left(\log k+1\right)}{k}\right)\right),
+\]
+
+\end_inset
+
+so using the approximation 
+\begin_inset Formula $H_{k}:=\sum_{i=1}^{k}\frac{1}{i}=\Theta\left(\log k+1\right)$
+\end_inset
+
+ for the harmonic series,
+\begin_inset Formula 
+\[
+\prod_{k=1}^{d}\frac{\left(k!\right)^{n/d}}{n!\left(k/n\right)^{n}}=e^{O\left(n\left(\log^{2}d+1\right)\right)}.
+\]
+
+\end_inset
+
+We have the following as a consequence.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:factorization-bounds"
+
+\end_inset
+
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $G'$
+\end_inset
+
+ be 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bipartite graphs on 
+\begin_inset Formula $n+n$
+\end_inset
+
+ vertices.
+ Then
+\begin_inset Formula 
+\[
+\frac{\Phi\left(G\right)}{\Phi\left(G'\right)}\le e^{O\left(n\left(\log^{2}d+1\right)\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, in the notation of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+, note that 
+\begin_inset Formula $\Lext G$
+\end_inset
+
+ is the number of 1-factorizations of 
+\begin_inset Formula $G$
+\end_inset
+
+, times the number of 1-factorizations of its complement.
+ For 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+, we need to exchange the role of symbols and rows in our correspondence
+ between Latin squares and 1-factorizations of 
+\begin_inset Formula $K_{n,n}$
+\end_inset
+
+: put an edge coloured 
+\begin_inset Formula $i$
+\end_inset
+
+ between 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ if 
+\begin_inset Formula $L_{i,x}=q$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\Lext L$
+\end_inset
+
+ is the number of 1-factorizations in the complement of a certain 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bipartite graph, which is an 
+\begin_inset Formula $\left(n-d\right)$
+\end_inset
+
+-regular bipartite graph.
+ Therefore both 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+ follow from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:factorization-bounds"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{appendices}
+\end_layout
 
 \end_inset
 
