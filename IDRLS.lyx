@@ -1174,7 +1174,7 @@ a.a.s.
 \begin_inset Formula $n\to\infty$
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -1457,9 +1457,9 @@ There exist arbitrarily large Latin squares
 \end_layout
 
 \begin_layout Standard
-that is, they conjecture that there are Latin squares (zero-one arrays)
- such that in any box, the density of ones is very close to the density
- 
+That is, Linial and Luria conjecture that there are Latin squares (zero-one
+ arrays) such that in any box, the density of ones is very close to the
+ density 
 \begin_inset Formula $1/n$
 \end_inset
 
@@ -6862,27 +6862,27 @@ We can therefore give bounds on the number of ways to choose a 1-factorization
  by choosing its 1-factors one-by-one:
 \begin_inset Formula 
 \[
-\prod_{k=1}^{d}n\left(\frac{k}{n}\right)^{n}\le\Phi\left(G\right)\le\prod_{k=1}^{d}\left(k!\right)^{n/k}.
+\prod_{k=1}^{d}n!\left(\frac{k}{n}\right)^{n}\le\Phi\left(G\right)\le\prod_{k=1}^{d}\left(k!\right)^{n/k}.
 \]
 
 \end_inset
 
-Stirling's inequality gives
+Now, Stirling's inequality gives
 \begin_inset Formula 
 \[
-\frac{\left(k!\right)^{n/d}}{n!\left(k/n\right)^{n}}\le\frac{\left(\Theta\left(\sqrt{k}\left(k/e\right)^{k}\right)\right)^{n/k}}{\left(n/e\right)^{n}\left(k/n\right)^{n}}\le\exp\left(O\left(\frac{n\left(\log k+1\right)}{k}\right)\right),
+\frac{\left(k!\right)^{n/k}}{n!\left(k/n\right)^{n}}\le\frac{\left(\Theta\left(\sqrt{k}\left(k/e\right)^{k}\right)\right)^{n/k}}{\left(n/e\right)^{n}\left(k/n\right)^{n}}\le\exp\left(O\left(\frac{n\left(\log k+1\right)}{k}\right)\right),
 \]
 
 \end_inset
 
 so using the approximation 
-\begin_inset Formula $H_{k}:=\sum_{i=1}^{k}\frac{1}{i}=\Theta\left(\log k+1\right)$
+\begin_inset Formula $\sum_{i=1}^{k}\frac{1}{i}=\Theta\left(\log k+1\right)$
 \end_inset
 
  for the harmonic series,
 \begin_inset Formula 
 \[
-\prod_{k=1}^{d}\frac{\left(k!\right)^{n/d}}{n!\left(k/n\right)^{n}}=e^{O\left(n\left(\log^{2}d+1\right)\right)}.
+\prod_{k=1}^{d}\frac{\left(k!\right)^{n/k}}{n!\left(k/n\right)^{n}}=e^{O\left(n\left(\log^{2}d+1\right)\right)}.
 \]
 
 \end_inset
