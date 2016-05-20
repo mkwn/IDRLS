@@ -6416,7 +6416,7 @@ The probability
  edges is 
 \begin_inset Formula 
 \[
-{n^{2} \choose pn^{2}}p^{pn^{2}}\left(1-p\right)^{pn^{2}}\asymp\frac{1}{n\sqrt{p\left(1-p\right)}}.
+{n^{2} \choose pn^{2}}p^{pn^{2}}\left(1-p\right)^{\left(1-p\right)n^{2}}\asymp\frac{1}{n\sqrt{p\left(1-p\right)}}.
 \]
 
 \end_inset
