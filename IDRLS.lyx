@@ -716,8 +716,8 @@ fi}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\randNk}{\boldsymbol{N_{k}}}
-{\boldsymbol{\boldsymbol{N_{k}}}}
+\newcommand{\randNk}{\boldsymbol{N}_{k}}
+{\boldsymbol{\boldsymbol{N}_{k}}}
 \end_inset
 
 
@@ -1785,7 +1785,7 @@ There is a constant
  Then
 \begin_inset Formula 
 \[
-\Pr\left(\E\randN<\frac{n^{2}}{4}\left(1-\varepsilon\right)\right)\le\exp\left(-\Omega\left(\varepsilon^{2}\sqrt{n}\right)\right).
+\Pr\left(\randN<\frac{n^{2}}{4}\left(1-\varepsilon\right)\right)\le\exp\left(-\Omega\left(\varepsilon^{2}\sqrt{n}\right)\right).
 \]
 
 \end_inset
@@ -2286,8 +2286,8 @@ reference "thm:two-rows-intercalate-tail"
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\sw}[2]{\mathrm{fx}_{#1}\left(#2\right)}
-{\boldsymbol{\mathrm{fx}_{#1}\left(#2\right)}}
+\newcommand{\sw}[2]{\mathrm{fix}_{#1}\left(#2\right)}
+{\boldsymbol{\mathrm{fix}_{#1}\left(#2\right)}}
 \end_inset
 
 
@@ -2295,8 +2295,8 @@ reference "thm:two-rows-intercalate-tail"
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\fl}[2]{\mathrm{fl}_{#1}\left(#2\right)}
-{\boldsymbol{\mathrm{fl}_{#1}\left(#2\right)}}
+\newcommand{\fl}[2]{\mathrm{flip}_{#1}\left(#2\right)}
+{\boldsymbol{\mathrm{flip}_{#1}\left(#2\right)}}
 \end_inset
 
 
@@ -2304,8 +2304,8 @@ reference "thm:two-rows-intercalate-tail"
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\jo}[2]{\mathrm{jo}_{#1}\left(#2\right)}
-{\boldsymbol{\mathrm{jo}_{#1}\left(#2\right)}}
+\newcommand{\jo}[2]{\mathrm{join}_{#1}\left(#2\right)}
+{\boldsymbol{\mathrm{join}_{#1}\left(#2\right)}}
 \end_inset
 
 
@@ -2454,11 +2454,6 @@ For any cycle
 \end_inset
 
 .
- We call this operation 
-\emph on
-fix
-\emph default
-.
  We also write 
 \begin_inset Formula $\sw xL$
 \end_inset
@@ -2558,11 +2553,6 @@ flippable
 \end_inset
 
 .
- We call this operation 
-\emph on
-flip
-\emph default
-.
 \end_layout
 
 \end_deeper
@@ -2603,7 +2593,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-3
+5
 \end_layout
 
 \end_inset
@@ -2614,7 +2604,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-5
+3
 \end_layout
 
 \end_inset
@@ -2654,7 +2644,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-5
+3
 \end_layout
 
 \end_inset
@@ -2665,7 +2655,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-3
+5
 \end_layout
 
 \end_inset
@@ -2867,7 +2857,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-5
+3
 \end_layout
 
 \end_inset
@@ -2878,7 +2868,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-3
+5
 \end_layout
 
 \end_inset
@@ -2918,7 +2908,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-3
+5
 \end_layout
 
 \end_inset
@@ -2929,7 +2919,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-5
+3
 \end_layout
 
 \end_inset
@@ -3836,7 +3826,7 @@ For any cycle
 \end_inset
 
 , we have 
-\begin_inset Formula $\sw ci\left(\sw cL\right)=L$
+\begin_inset Formula $\sw c{\sw cL}=L$
 \end_inset
 
 .
@@ -3909,12 +3899,7 @@ For columns
 
 \end_inset
 
-We call this operation 
-\emph on
-join
-\emph default
-.
- If also 
+If also 
 \begin_inset Formula $\c xL\in\C 2L$
 \end_inset
 
@@ -3927,6 +3912,23 @@ double
 single 
 \emph default
 join.
+ Note that the join operation is not in general symmetric in 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+; we have 
+\begin_inset Formula $\jo{x,y}L=\jo{y,x}L$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\left\{ x,y\right\} \in\FL L$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -3947,10 +3949,7 @@ Let
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Standard
-We make some observations about the join operation.
+ We make some observations about the join operation.
 \end_layout
 
 \begin_layout Fact
@@ -4014,7 +4013,7 @@ For
  which we can reach with a double join is 
 \begin_inset Formula 
 \[
-2\X 2L\times2\left(\X 2L-1\right)=4\left(s^{2}+3s+2\right)\ge2s^{2}.
+2\X 2L\times2\left(\X 2L-1\right)/2=2\left(s^{2}+3s+2\right)\ge2s^{2}.
 \]
 
 \end_inset
@@ -4027,7 +4026,16 @@ For
 \begin_inset Formula $y$
 \end_inset
 
- in a different intercalate).
+ in a different intercalate.
+ Since 
+\begin_inset Formula $\left(x,y\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ may produce the same join, we then divide by 2 for a lower bound).
 \end_layout
 
 \begin_layout Enumerate
@@ -4150,9 +4158,9 @@ Similarly, double-counting the number of ways to double join from a Latin
 
 So, 
 \begin_inset Formula 
-\[
-\frac{\left|\Lk{s+1}\right|}{\left|\Lk s\right|}\le\frac{1}{s+1}\left(1+O\left(\frac{1}{n}\right)\right)
-\]
+\begin{equation}
+\frac{\left|\Lk{s+1}\right|}{\left|\Lk s\right|}\le\frac{1}{s+1}\left(1+O\left(\frac{1}{n}\right)\right)\label{eq:join-main-recurrence}
+\end{equation}
 
 \end_inset
 
@@ -4195,10 +4203,10 @@ for
 
 , and
 \begin_inset Formula 
-\begin{align*}
-\Pr\left(\randNt=t\right) & =O\left(\frac{1}{\left(n/4\right)!}\right),\\
-\Pr\left(\randNt>t\right) & \le O\left(\frac{n}{\left(n/4\right)!}\right)=e^{-\Omega\left(n\log n\right)}=e^{-\Omega\left(t\log t\right)}
-\end{align*}
+\begin{align}
+\Pr\left(\randNt=t\right) & =O\left(\frac{1}{\left(n/4\right)!}\right),\nonumber \\
+\Pr\left(\randNt\ge t\right) & \le O\left(\frac{n}{\left(n/4\right)!}\right)=e^{-\Omega\left(n\log n\right)}=e^{-\Omega\left(t\log t\right)}\label{eq:many-intercalates-probability-bound}
+\end{align}
 
 \end_inset
 
@@ -4207,7 +4215,7 @@ for
 \end_inset
 
 .
- It follows that 
+ It therefore follows that 
 \begin_inset Formula $\Pr\left(\randNt\ge t\right)=e^{-\Omega\left(t\log t\right)}$
 \end_inset
 
@@ -4224,60 +4232,34 @@ We now bound
 \end_inset
 
 .
- Fix some constant 
-\begin_inset Formula $C$
+ By 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:join-main-recurrence"
+
 \end_inset
 
-, fix some 
-\begin_inset Formula $k$
+, for 
+\begin_inset Formula $1\le t\le n/4$
 \end_inset
 
- with 
-\begin_inset Formula $1\ll k\ll n$
+ we have 
+\begin_inset Formula $t\Pr\left(\randNt=t\right)\le\left(1+o\left(1\right)\right)\Pr\left(\randNt=t-1\right)$
 \end_inset
 
-, and define each 
-\begin_inset Formula $d_{t}$
+, so, using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:many-intercalates-probability-bound"
+
 \end_inset
 
- (
-\begin_inset Formula $t\le k$
-\end_inset
-
-) by 
+,
 \begin_inset Formula 
-\[
-\frac{\Pr\left(\randNt=t\right)}{\Pr\left(\randNt=0\right)}=\frac{\left|\Lk t\right|}{\left|\Lk 0\right|}=\frac{1}{t!}e^{Ck/n}-d_{t}.
-\]
-
-\end_inset
-
-For large 
-\begin_inset Formula $C$
-\end_inset
-
- each 
-\begin_inset Formula $d_{t}$
-\end_inset
-
- is positive.
- We have
-\begin_inset Formula 
-\[
-1\sim\sum_{t=0}^{k}\Pr\left(\randNt=t\right)\sim\Pr\left(\randNt=0\right)\left(e^{Ck/n}\sum_{t=0}^{k}1/t!-\sum_{t=0}^{k}d_{t}\right)\sim\Pr\left(\randNt=0\right)\left(e-\sum_{t=1}^{k}d_{t}\right)
-\]
-
-\end_inset
-
-(note that 
-\begin_inset Formula $d_{0}=o\left(1\right)$
-\end_inset
-
-) and 
-\begin_inset Formula 
-\[
-\E\randNt=\sum_{t=0}^{k}t\Pr\left(\randNt=t\right)=\Pr\left(\randNt=0\right)\left(e^{Ck/n}\sum_{t=0}^{k}1/\left(t-1\right)!-\sum_{t=0}^{k}td_{t}\right)\sim\frac{e-\sum_{t=1}^{k}td_{t}}{e-\sum_{t=1}^{k}d_{t}}\le1.
-\]
+\begin{align*}
+\E\randNt & \le0\Pr\left(\randNt=0\right)+\left(1+o\left(1\right)\right)\sum_{t=1}^{n/4}\Pr\left(\randNt=t-1\right)+\frac{n}{2}\Pr\left(\randNt>\frac{n}{4}\right)\\
+ & \le0+\left(1+o\left(1\right)\right)+\frac{n}{2}e^{-\Omega\left(n\log n\right)}\to1.
+\end{align*}
 
 \end_inset
 
@@ -4343,8 +4325,8 @@ reference "lem:lower-bound-rectangles"
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\ro}[3]{\mathrm{ro}_{#1}^{#2}\left(#3\right)}
-{\boldsymbol{\mathrm{ro}_{#1}^{#2}\left(#3\right)}}
+\newcommand{\ro}[3]{\mathrm{rot}_{#1}^{#2}\left(#3\right)}
+{\boldsymbol{\mathrm{rot}_{#1}^{#2}\left(#3\right)}}
 \end_inset
 
 
@@ -4352,8 +4334,8 @@ reference "lem:lower-bound-rectangles"
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\tw}[3]{\mathrm{tw}_{#1}^{#2}\left(#3\right)}
-{\boldsymbol{\mathrm{tw}_{#1}^{#2}\left(#3\right)}}
+\newcommand{\tw}[3]{\mathrm{twist}_{#1}^{#2}\left(#3\right)}
+{\boldsymbol{\mathrm{twist}_{#1}^{#2}\left(#3\right)}}
 \end_inset
 
 
@@ -4431,11 +4413,11 @@ Consider a Latin rectangle
 \end_inset
 
 .
- This operation is called 
+ We call this the 
 \emph on
 rotate
 \emph default
-.
+ operation.
  Note that 
 \begin_inset Formula $L'$
 \end_inset
@@ -6416,7 +6398,7 @@ The probability
  edges is 
 \begin_inset Formula 
 \[
-{n^{2} \choose pn^{2}}p^{pn^{2}}\left(1-p\right)^{\left(1-p\right)n^{2}}\asymp\frac{1}{n\sqrt{p\left(1-p\right)}}.
+{n^{2} \choose pn^{2}}p^{pn^{2}}\left(1-p\right)^{\left(1-p\right)n^{2}}\asymp\frac{1}{n\sqrt{p\left(1-p\right)}}=e^{-o\left(n\right)}.
 \]
 
 \end_inset
@@ -6442,7 +6424,7 @@ reference "thm:regular-enumeration"
 \begin_inset Formula 
 \begin{align*}
  & \left(p^{p}\left(1-p\right)^{1-p}\right)^{n^{2}}{n \choose pn}^{2n}n\sqrt{2\pi p\left(1-p\right)}e^{-1/2}\left/{n^{2} \choose pn^{2}}\right.\\
- & \qquad=\left(p\left(1-p\right)n\right)^{-\left(2+o\left(1\right)\right)n}\le e^{-O\left(n\log n\right)}.\tag*{\qedhere}
+ & \qquad=\left(O\left(p\left(1-p\right)n\right)\right)^{-\left(1+o\left(1\right)\right)n}\ge e^{-O\left(n\log n\right)}.\tag*{\qedhere}
 \end{align*}
 
 \end_inset
@@ -6642,8 +6624,6 @@ key "MW99"
 , and similar logic would suggest that a.a.s.
  there are no Latin subsquares of larger order.
  A proof of either of these facts would be interesting.
- One can also ask about Latin subrectangles, or partial Latin subrectangles,
- of various kinds.
 \end_layout
 
 \begin_layout Standard
@@ -6691,7 +6671,7 @@ reference "sec:permanent"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "references"
-options "amsplain_initials"
+options "amsplain_mod"
 
 \end_inset
 
@@ -6876,7 +6856,7 @@ Now, Stirling's inequality gives
 \end_inset
 
 so using the approximation 
-\begin_inset Formula $\sum_{i=1}^{k}\frac{1}{i}=\Theta\left(\log k+1\right)$
+\begin_inset Formula $\sum_{i=1}^{d}\frac{1}{i}=\Theta\left(\log d+1\right)$
 \end_inset
 
  for the harmonic series,

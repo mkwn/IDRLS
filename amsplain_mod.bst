@@ -171,6 +171,13 @@ FUNCTION {emphasize}
   if$
 }
 
+FUNCTION {bold}
+{ duplicate$ empty$
+    { pop$ "" }
+    { "\textbf{" swap$ * "}" * }
+  if$
+}
+
 % n.dashify is used to make sure page ranges get the TeX code
 % (two hyphens) for en-dashes.
 
@@ -402,14 +409,21 @@ FUNCTION {format.nonauthor.editors}
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$ emphasize }
+    { title "t" change.case$}
+  if$
+}
+
+FUNCTION {format.booktitle}
+{ title empty$
+    { "" }
+    { title "t" change.case$ bold}
   if$
 }
 
 FUNCTION {format.journal.vol.year}
 { journal empty$
     { "journal name" missing.warning ""}
-    { journal }
+    { journal emphasize }
   if$
   volume empty$
     'skip$
@@ -533,8 +547,8 @@ FUNCTION {format.incoll.title.editors}
 { booktitle empty$
     { "" }
     { editor empty$
-        { booktitle }
-        { booktitle
+        { booktitle "t" change.case$ bold }
+        { booktitle "t" change.case$ bold
           add.space.if.necessary "(" * format.nonauthor.editors * ")" *
         }
       if$
@@ -761,7 +775,7 @@ FUNCTION {book}
       if$
     }
   if$
-  format.title "title" output.check
+  format.booktitle "title" output.check
   format.edition output
   crossref missing$
     { format.bookvolume.series.number output
