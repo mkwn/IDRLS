@@ -16,6 +16,8 @@
 
 \usepackage[parfill]{parskip}
 \setlength{\parskip}{\bigskipamount}
+%\usepackage{setspace}
+%\setstretch{0.93}
 
 %have space before theorems
 \begingroup
@@ -174,10 +176,10 @@ theorems-ams
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2.5cm
-\topmargin 2.5cm
-\rightmargin 2.5cm
-\bottommargin 2.5cm
+\leftmargin 2.38cm
+\topmargin 2.4cm
+\rightmargin 2.38cm
+\bottommargin 2.4cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation skip
@@ -967,7 +969,7 @@ The simplest and most natural notion of a random Latin square is the uniform
 
  Latin squares.
  Random Latin squares are very difficult to study: they lack independence
- or any kind of recursive structure, which rule out many of the techniques
+ or any kind of recursive structure, which rules out many of the techniques
  used to study binomial random graphs and random permutations, and there
  is little freedom to make local changes, which limits the use of 
 \begin_inset Quotes eld
@@ -1076,14 +1078,15 @@ intercalate
 \end_inset
 
  intercalates.
- Kotzig and Turgeon 
+ In a series of papers due to Kotzig, Lindner, McLeish, Rosa and Turgeon
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "KT76"
+key "KLR75,McL75,KT76"
 
 \end_inset
 
- proved that for all orders except 
+, it was proved that for all orders except 
 \begin_inset Formula $2\times2$
 \end_inset
 
@@ -1350,7 +1353,7 @@ key "LL15"
 \begin_inset Formula $\L$
 \end_inset
 
- can be interpreted as the set of all 
+ can more symmetrically be interpreted as the set of all 
 \begin_inset Formula $n\times n\times n$
 \end_inset
 
@@ -1787,7 +1790,7 @@ There is a constant
  Then
 \begin_inset Formula 
 \[
-\Pr\left(\randN<\frac{n^{2}}{4}\left(1-\varepsilon\right)\right)\le\exp\left(-\Omega\left(\varepsilon^{2}\sqrt{n}\right)\right).
+\Pr\left(\randN<\frac{n^{2}}{4}\left(1-\varepsilon\right)\right)\le\exp\left(-\Omega\left(\varepsilon^{2}\frac{\sqrt{n}}{\log n}\right)\right).
 \]
 
 \end_inset
@@ -2102,19 +2105,7 @@ There is a constant
 \end_inset
 
  intercalates.
- Suppose 
-\begin_inset Formula $k\ge\sqrt{n}$
-\end_inset
-
- and 
-\begin_inset Formula $k\le\K\le n$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Lemma
-Let 
+ Let 
 \begin_inset Formula $\randN=N\left(\randL\right)$
 \end_inset
 
@@ -2124,6 +2115,10 @@ Let
 
 .
  If 
+\begin_inset Formula $k\ge\sqrt{n}$
+\end_inset
+
+ and 
 \begin_inset Formula $t\ge Ck^{2}\left(\K/n+k/\K\right)$
 \end_inset
 
@@ -2389,33 +2384,12 @@ Note that any two rows
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\X{\alpha}L=\left|\C{\alpha}L\right|$
+ Note that 
+\begin_inset Formula $\C 2L$
 \end_inset
 
-.
- We are interested in 
-\begin_inset Formula $\randNt=N_{2}\left(\randL\right)=\X 2{\randL}$
-\end_inset
-
- for a uniformly random 
-\begin_inset Formula $\randL\in\L$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\Lk s\subseteq\L$
-\end_inset
-
- be the set of Latin squares 
+ is the set of intercalates in the first two rows of 
 \begin_inset Formula $L$
-\end_inset
-
- with 
-\begin_inset Formula $\X 2L=s$
 \end_inset
 
 .
@@ -3724,8 +3698,7 @@ Suppose
 \begin_inset Formula $\left\{ x,y\right\} \in\FL L$
 \end_inset
 
-.
- If 
+, and suppose 
 \begin_inset Formula $\c xL\ne\c yL$
 \end_inset
 
@@ -3841,8 +3814,7 @@ For any cycle
 \end_inset
 
 .
- That is, the fix and flip operations are both involutions and in particular
- they are invertible.
+ That is, the fix and flip operations are both involutions.
 \end_layout
 
 \begin_layout Enumerate
@@ -3914,7 +3886,7 @@ double
 single 
 \emph default
 join.
- Note that the join operation is not in general symmetric in 
+ Note that a double join is not in general symmetric in 
 \begin_inset Formula $x$
 \end_inset
 
@@ -3935,6 +3907,15 @@ join.
 
 \begin_layout Standard
 Let 
+\begin_inset Formula $\X{\alpha}L=\left|\C{\alpha}L\right|$
+\end_inset
+
+ be the number of cycles of length 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Let 
 \begin_inset Formula $\Lk s\subseteq\L$
 \end_inset
 
@@ -4012,7 +3993,7 @@ For
 \begin_inset Formula $L'\in\Lk s$
 \end_inset
 
- which we can reach with a double join is 
+ which we can reach with a double join is at least 
 \begin_inset Formula 
 \[
 2\X 2L\times2\left(\X 2L-1\right)/2=2\left(s^{2}+3s+2\right)\ge2s^{2}.
@@ -4198,7 +4179,7 @@ for
 and
 \begin_inset Formula 
 \[
-\Pr\left(t<\randNt\le\frac{n}{4}\right)\le O\left(1\right)\sum_{s=t}^{n/2}\frac{1}{s!}\le O\left(\frac{1}{t!}\right)\sum_{r=0}^{\infty}\frac{1}{t^{r}}=O\left(\frac{1}{t!}\right)=e^{-\Omega\left(t\log t\right)}.
+\Pr\left(t\le\randNt\le\frac{n}{4}\right)\le O\left(1\right)\sum_{s=t}^{n/4}\frac{1}{s!}\le O\left(\frac{1}{t!}\right)\sum_{r=0}^{\infty}\frac{1}{t^{r}}=O\left(\frac{1}{t!}\right)=e^{-\Omega\left(t\log t\right)}.
 \]
 
 \end_inset
@@ -4251,11 +4232,15 @@ reference "eq:join-main-recurrence"
 \begin_inset Formula $t\Pr\left(\randNt=t\right)\le\left(1+o\left(1\right)\right)\Pr\left(\randNt=t-1\right)$
 \end_inset
 
-, so, using 
+, so using 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:many-intercalates-probability-bound"
 
+\end_inset
+
+ and noting that 
+\begin_inset Formula $\randNt\le n/2$
 \end_inset
 
 ,
@@ -5270,7 +5255,7 @@ There might be an intercalate involving
 
 \end_deeper
 \begin_layout Proof
-If the above points are not violated then
+If the above violations do not occur then
 \series bold
  
 \series default
@@ -5278,7 +5263,7 @@ we can use
 \begin_inset Formula $i,x,y,z,x',y',z'$
 \end_inset
 
- to do a twist, so the number of valid ways to twist is at least
+ to twist, so the number of valid ways to twist is at least
 \begin_inset Formula 
 \begin{align*}
  & \frac{1}{2}k^{2}\left(1-O\left(\frac{s}{k\K}+\frac{1}{k}\right)\right)\left(n^{4}\left(1+O\left(\frac{1}{n}\right)\right)-O\left(\K n^{3}\right)-O\left(kn^{3}\right)-O\left(n^{3}\right)\right)\\
@@ -5288,27 +5273,11 @@ we can use
 \end_inset
 
 (We divide by 2 to compensate for the fact that we can exchange 
-\begin_inset Formula $x$
+\begin_inset Formula $\left(x\,y\,z\right)$
 \end_inset
 
  and 
-\begin_inset Formula $x'$
-\end_inset
-
-, 
-\begin_inset Formula $y$
-\end_inset
-
- and 
-\begin_inset Formula $y'$
-\end_inset
-
-, 
-\begin_inset Formula $z$
-\end_inset
-
- and 
-\begin_inset Formula $z'$
+\begin_inset Formula $\left(x'\,y'\,z'\right)$
 \end_inset
 
  to give the same twist).
@@ -5447,10 +5416,14 @@ ref{lem:forwards-rotate,lem:backwards-rotate}
 \end_inset
 
  and 
-\begin_inset Formula $k\le\K\le n$
+\begin_inset Formula $Ck^{2}\left(\K/n+k/\K\right)\le k^{2}/4$
 \end_inset
 
-, this gives 
+ for large 
+\begin_inset Formula $C$
+\end_inset
+
+, we obtain 
 \begin_inset Formula 
 \[
 \frac{\left|\LkKs k{s-1}{\K}\right|}{\left|\LkKs ks{\K}\right|}\le\frac{s}{k^{2}/4}\exp\left(O\left(\frac{\K}{n}+\frac{k}{\K}\right)\right),
@@ -5471,7 +5444,7 @@ so for
 \end_inset
 
 For 
-\begin_inset Formula $0\le2r\le k^{4}/4$
+\begin_inset Formula $0\le r\le k^{4}/8$
 \end_inset
 
  we have 
@@ -5482,7 +5455,11 @@ For
 \begin_inset Formula $\left(-\Theta\left(r/k^{2}\right)\right)$
 \end_inset
 
-; it follows that
+; it follows that for 
+\begin_inset Formula $s\le k^{2}/8,$
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
 \Pr\left(\randN=k^{2}/4-s\right) & \le\frac{\left|\LkKs k{k^{2}/4-s}{\K}\right|}{\left|\LkKs k{k^{2}/4}{\K}\right|}\\
@@ -5493,7 +5470,7 @@ For
 \end_inset
 
 If 
-\begin_inset Formula $t\ge Ck^{2}\left(\K/n+k/\K\right)$
+\begin_inset Formula $Ck^{2}\left(\K/n+k/\K\right)\le t\le k^{2}/8$
 \end_inset
 
  for large 
@@ -5503,7 +5480,19 @@ If
 , then
 \begin_inset Formula 
 \[
-\Pr\left(\randN<k^{2}/4-t\right)\le\sum_{s=t}^{k^{2}/4}e^{-\Omega\left(s^{2}/k^{2}\right)}=e^{-\Omega\left(t^{2}/k^{2}\right)}.
+\Pr\left(\randN<k^{2}/4-t\right)\le\sum_{s=t}^{k^{2}/8}e^{-\Omega\left(s^{2}/k^{2}\right)}=e^{-\Omega\left(t^{2}/k^{2}\right)}.
+\]
+
+\end_inset
+
+The case 
+\begin_inset Formula $k^{2}/8<t\le k^{2}/4$
+\end_inset
+
+ follows trivially, because in this case 
+\begin_inset Formula 
+\[
+\Pr\left(\randN<k^{2}/4-t\right)\le\Pr\left(\randN<k^{2}/8\right)=e^{-\Omega\left(\left(k^{2}\right)^{2}/k^{2}\right)}=e^{-\Omega\left(t^{2}/k^{2}\right)}.
 \]
 
 \end_inset
@@ -5563,10 +5552,6 @@ The constant
 \begin_inset Formula $\K=\varepsilon n/C_{0}$
 \end_inset
 
-, and note that 
-\begin_inset Formula $k\le\K$
-\end_inset
-
 .
 \end_layout
 
@@ -5619,7 +5604,7 @@ reference "thm:two-rows-intercalate-tail"
  and the union bound (and symmetry considerations),
 \begin_inset Formula 
 \[
-1-\Pr\left(\mathcal{E}\right)=k^{2}\exp\left(-\Omega\left(\frac{\K}{\left(k-1\right)}\log\frac{\K}{\left(k-1\right)}\right)\right)=\exp\left(-\Omega\left(\frac{\K}{k}\log\frac{\K}{k}\right)\right).
+1-\Pr\left(\mathcal{E}\right)=k^{2}\exp\left(-\Omega\left(\frac{\K}{\left(k-1\right)}\log\frac{\K}{\left(k-1\right)}\right)\right)=\exp\left(-\Omega\left(\frac{\K}{k}\log\frac{\K}{k}\right)\right)=\exp\left(-\Omega\left(\varepsilon^{2}\frac{\sqrt{n}}{\log n}\right)\right).
 \]
 
 \end_inset
@@ -5689,13 +5674,13 @@ for large
 
 .
  Note that 
-\begin_inset Formula $\varepsilon^{2}k^{2}\gg\left(\K/k\right)\log\left(\K/k\right)$
+\begin_inset Formula $\varepsilon^{2}k^{2}\gg\varepsilon^{2}\sqrt{n}/\log n$
 \end_inset
 
  so 
 \begin_inset Formula 
 \begin{equation}
-\Pr\left(\randNk<\left(1-\varepsilon/2\right)k^{2}/4\right)\le\exp\left(-\Omega\left(\frac{\K}{k}\log\frac{\K}{k}\right)\right)\label{eq:subrectangle-lower-tail}
+\Pr\left(\randNk<\left(1-\varepsilon/2\right)k^{2}/4\right)\le\exp\left(-\Omega\left(\varepsilon^{2}\frac{\sqrt{n}}{\log n}\right)\right)\label{eq:subrectangle-lower-tail}
 \end{equation}
 
 \end_inset
@@ -5852,7 +5837,7 @@ reference "eq:subrectangle-lower-tail"
 \begin_inset Formula $k/n+\log n/\left(\sqrt{M}k/n\right)\ll\varepsilon$
 \end_inset
 
-, we have 
+, this implies 
 \begin_inset Formula 
 \begin{align*}
 \randN & \ge\frac{M\left(1-\varepsilon/2\right)k^{2}/4}{M\left(k/n\right)^{2}\left(1+o\left(\varepsilon\right)\right)}\\
@@ -6167,8 +6152,8 @@ key "KSVW01"
  would be difficulties for very dense graphs).
  However, at the range of probabilities we are interested in, regular bipartite
  graphs comprise a non-negligible proportion of all bipartite graphs with
- the appropriate number of edges, and (modulo a deep enumeration theorem
- for regular bipartite graphs) this enables a simpler approach.
+ the appropriate number of edges, and (modulo an enumeration theorem for
+ regular bipartite graphs) this enables a simpler approach.
  Let 
 \begin_inset Formula $\GGB np$
 \end_inset
@@ -6196,7 +6181,15 @@ name "lem:Gnp-regular"
 
 \end_inset
 
-Let 
+For any 
+\begin_inset Formula $d$
+\end_inset
+
+ (potentially depending on 
+\begin_inset Formula $n$
+\end_inset
+
+), let 
 \begin_inset Formula $p=d/n$
 \end_inset
 
@@ -6229,7 +6222,14 @@ reference "lem:Gnp-regular"
 
 \end_inset
 
- we will use the following theorem of Wormald and Liebenau [?].
+ we will use the following very recent theorem of Liebenau and Wormald 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LW16"
+
+\end_inset
+
+ (which has yet to publicly appear).
 \end_layout
 
 \begin_layout Theorem
@@ -6239,12 +6239,15 @@ name "thm:regular-enumeration"
 
 \end_inset
 
-Let 
-\begin_inset Formula $p=d/n$
+For any 
+\begin_inset Formula $d$
 \end_inset
 
-.
- The number 
+ (potentially depending on 
+\begin_inset Formula $n$
+\end_inset
+
+), the number 
 \begin_inset Formula $\left|\Gd d\right|$
 \end_inset
 
@@ -6259,7 +6262,7 @@ Let
  is asymptotic to
 \begin_inset Formula 
 \[
-\left(p^{p}\left(1-p\right)^{1-p}\right)^{n^{2}}{n \choose pn}^{2n}n\sqrt{2\pi p\left(1-p\right)}e^{-1/2}.
+e^{-1/2}{n \choose d}^{2n}{n^{2} \choose dn}^{-1}.
 \]
 
 \end_inset
@@ -6319,10 +6322,9 @@ reference "thm:regular-enumeration"
 
 -regular is
 \begin_inset Formula 
-\begin{align*}
- & \left(p^{p}\left(1-p\right)^{1-p}\right)^{n^{2}}{n \choose pn}^{2n}n\sqrt{2\pi p\left(1-p\right)}e^{-1/2}\left/{n^{2} \choose pn^{2}}\right.\\
- & \qquad=\left(O\left(p\left(1-p\right)n\right)\right)^{-\left(1+o\left(1\right)\right)n}\ge e^{-O\left(n\log n\right)}.\tag*{\qedhere}
-\end{align*}
+\[
+\left(1+o\left(1\right)\right)e^{-1/2}{n \choose pn}^{2n}\left/{n^{2} \choose pn^{2}}^{2}\right.=\left(O\left(p\left(1-p\right)n\right)\right)^{-n}\ge e^{-O\left(n\log n\right)}.\tag*{\qedhere}
+\]
 
 \end_inset
 
@@ -6747,13 +6749,13 @@ We can therefore give bounds on the number of ways to choose a 1-factorization
 Now, Stirling's inequality gives
 \begin_inset Formula 
 \[
-\frac{\left(k!\right)^{n/k}}{n!\left(k/n\right)^{n}}\le\frac{\left(\Theta\left(\sqrt{k}\left(k/e\right)^{k}\right)\right)^{n/k}}{\left(n/e\right)^{n}\left(k/n\right)^{n}}\le\exp\left(O\left(\frac{n\left(\log k+1\right)}{k}\right)\right),
+\frac{\left(k!\right)^{n/k}}{n!\left(k/n\right)^{n}}\le\frac{\left(\Theta\left(\sqrt{k}\left(k/e\right)^{k}\right)\right)^{n/k}}{\sqrt{n}\left(n/e\right)^{n}\left(k/n\right)^{n}}\le\exp\left(O\left(\frac{n\left(\log k+1\right)}{k}\right)\right),
 \]
 
 \end_inset
 
 so using the approximation 
-\begin_inset Formula $\sum_{i=1}^{d}\frac{1}{i}=\Theta\left(\log d+1\right)$
+\begin_inset Formula $\sum_{i=1}^{d}1/i=\Theta\left(\log d+1\right)$
 \end_inset
 
  for the harmonic series,
@@ -6853,11 +6855,11 @@ reference "prop:extend-to-latin-squares"
 \end_inset
 
  is the number of 1-factorizations in the complement of a certain 
-\begin_inset Formula $d$
+\begin_inset Formula $k$
 \end_inset
 
 -regular bipartite graph, which is an 
-\begin_inset Formula $\left(n-d\right)$
+\begin_inset Formula $\left(n-k\right)$
 \end_inset
 
 -regular bipartite graph.
