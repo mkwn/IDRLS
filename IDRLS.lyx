@@ -131,6 +131,7 @@ theorems-ams
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement h
 \paperfontsize 11
 \spacing other 0.96
 \use_hyperref true
@@ -716,7 +717,7 @@ fi}
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\randNk}{\boldsymbol{N}_{k}}
+\newcommand{\randNk}{\boldsymbol{N}_{\!k}}
 {\boldsymbol{\boldsymbol{N}_{k}}}
 \end_inset
 
@@ -1014,7 +1015,7 @@ key "Pitt97"
 
 \begin_layout Standard
 Some of the earlier work on random Latin squares concerned algebraic properties
- (
+ (see for example 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Cam92,HJ96"
@@ -1506,14 +1507,15 @@ empty
 \end_inset
 
 .
- We are able to give a simple argument (encompassing Linial and Luria's
- aforementioned result), showing that random Latin squares a.a.s.
+ We are able to give a simple argument showing that random Latin squares
+ a.a.s.
  have quite low discrepancy, especially when considering boxes of volume
  
-\begin_inset Formula $\Omega\left(n^{2}\right)$
+\begin_inset Formula $\Omega\left(n^{2}\log^{2}n\right)$
 \end_inset
 
 .
+ This encompasses Linial and Luria's aforementioned result.
 \end_layout
 
 \begin_layout Theorem
@@ -4168,7 +4170,7 @@ for
 \begin_inset Formula $2s\le n/2$
 \end_inset
 
- and 
+, and 
 \begin_inset Formula $\left|\Lk{s+2}\right|/\left|\Lk s\right|\le1$
 \end_inset
 
@@ -4181,7 +4183,11 @@ for
 \end_inset
 
 ).
- It follows that
+ It follows that for 
+\begin_inset Formula $t\le n/4$
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
 \Pr\left(\randNt=t\right) & \le\frac{\left|\Lk t\right|}{\left|\Lk 0\right|}\le\prod_{s=0}^{t-1}\frac{\left|\Lk{s+1}\right|}{\left|\Lk s\right|}=\frac{1}{t!}e^{O\left(t/n\right)}
@@ -4192,30 +4198,28 @@ for
 and
 \begin_inset Formula 
 \[
-\Pr\left(t<\randNt\le\frac{n}{4}\right)\le O\left(1\right)\sum_{s=t}^{n/2}\frac{1}{s!}\le O\left(\frac{1}{t!}\right)\sum_{r=0}^{\infty}\frac{1}{t^{r}}=O\left(\frac{1}{t!}\right)=e^{-\Omega\left(t\log t\right)}
+\Pr\left(t<\randNt\le\frac{n}{4}\right)\le O\left(1\right)\sum_{s=t}^{n/2}\frac{1}{s!}\le O\left(\frac{1}{t!}\right)\sum_{r=0}^{\infty}\frac{1}{t^{r}}=O\left(\frac{1}{t!}\right)=e^{-\Omega\left(t\log t\right)}.
 \]
 
 \end_inset
 
-for 
-\begin_inset Formula $t\le n/4$
+For 
+\begin_inset Formula $t>n/4$
 \end_inset
 
-, and
+ we have 
+\begin_inset Formula $\Pr\left(\randNt=t\right)=O\left(1/\left(\left(n/4\right)!\right)\right)$
+\end_inset
+
+ and
 \begin_inset Formula 
 \begin{align}
-\Pr\left(\randNt=t\right) & =O\left(\frac{1}{\left(n/4\right)!}\right),\nonumber \\
-\Pr\left(\randNt\ge t\right) & \le O\left(\frac{n}{\left(n/4\right)!}\right)=e^{-\Omega\left(n\log n\right)}=e^{-\Omega\left(t\log t\right)}\label{eq:many-intercalates-probability-bound}
+\Pr\left(\randNt\ge t\right) & \le O\left(\frac{n}{\left(n/4\right)!}\right)=e^{-\Omega\left(n\log n\right)}=e^{-\Omega\left(t\log t\right)}.\label{eq:many-intercalates-probability-bound}
 \end{align}
 
 \end_inset
 
-for 
-\begin_inset Formula $t>n/4$
-\end_inset
-
-.
- It therefore follows that 
+It therefore follows that 
 \begin_inset Formula $\Pr\left(\randNt\ge t\right)=e^{-\Omega\left(t\log t\right)}$
 \end_inset
 
@@ -4373,7 +4377,24 @@ good
 \end_inset
 
  intercalates.
- 
+\end_layout
+
+\begin_layout Standard
+To prove 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lower-bound-rectangles"
+
+\end_inset
+
+ we use essentially the same switching as in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MW99"
+
+\end_inset
+
+, designed to increase the number of intercalates by exactly 1.
 \end_layout
 
 \begin_layout Definition
@@ -4508,6 +4529,19 @@ The positions
 \end_inset
 
 .
+ This is the only intercalate involving 
+\begin_inset Formula $\left(i,x\right)$
+\end_inset
+
+ or 
+\begin_inset Formula $\left(i,x'\right)$
+\end_inset
+
+ in 
+\begin_inset Formula $L'$
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
@@ -4520,48 +4554,6 @@ Then we define the twist of
 \begin_inset Formula $\tw{\left\{ \left(x,y,z\right),\left(x',y',z'\right)\right\} }iL=L'$
 \end_inset
 
-.
- Note that we might have created (up to 
-\begin_inset Formula $O\left(k\right)$
-\end_inset
-
-) intercalates involving 
-\begin_inset Formula $\left(i,x\right)$
-\end_inset
-
- and 
-\begin_inset Formula $\left(i,x'\right)$
-\end_inset
-
-, other than the
-\emph on
- 
-\emph default
-
-\begin_inset Quotes eld
-\end_inset
-
-main
-\begin_inset Quotes erd
-\end_inset
-
- in tercalate involving both 
-\begin_inset Formula $\left(i,x\right)$
-\end_inset
-
- and 
-\begin_inset Formula $\left(i,x'\right)$
-\end_inset
-
-.
- If the only new intercalate in 
-\begin_inset Formula $L'$
-\end_inset
-
- is the main one, then we say the twist was 
-\emph on
-simple
-\emph default
 .
 \end_layout
 
@@ -4908,8 +4900,7 @@ The number of good Latin rectangles
 \begin_inset Formula $L'\in\LkKs k{s+1}{\K}$
 \end_inset
 
- which we can reach via a simple twist from a specific good Latin rectangle
- 
+ which we can reach via a twist from a specific good Latin rectangle 
 \begin_inset Formula $L\in\LkKs ks{\K}$
 \end_inset
 
@@ -4965,7 +4956,15 @@ Let
 \end_inset
 
 ways to do this.
- Next, choose distinct columns 
+ (Since we chose rows involved in at most 
+\begin_inset Formula $\K-1$
+\end_inset
+
+ intercalates, we do not need to worry about violating the goodness condition).
+\end_layout
+
+\begin_layout Proof
+Next, choose distinct columns 
 \begin_inset Formula $x,\,y,\,x',\,y'$
 \end_inset
 
@@ -5090,7 +5089,7 @@ The symbol
 
 \begin_layout Itemize
 We might have 
-\begin_inset Formula $z'\in\left\{ x',y,y',z\right\} $
+\begin_inset Formula $z'\in\left\{ x',y,y'\right\} $
 \end_inset
 
 .
@@ -5099,7 +5098,7 @@ We might have
 \end_inset
 
  there are at most 
-\begin_inset Formula $4$
+\begin_inset Formula $3$
 \end_inset
 
  choices of 
@@ -5108,12 +5107,12 @@ We might have
 
  that cause this.
  Similarly we might have 
-\begin_inset Formula $z\in\left\{ x,y,y',z'\right\} $
+\begin_inset Formula $z\in\left\{ x,y,y'\right\} $
 \end_inset
 
 .
  We should subtract 
-\begin_inset Formula $8n^{3}$
+\begin_inset Formula $6n^{3}$
 \end_inset
 
  to compensate for both.
@@ -5166,6 +5165,10 @@ There might be an intercalate involving
 \begin_inset Formula $k-1$
 \end_inset
 
+ non-
+\begin_inset Formula $y$
+\end_inset
+
  columns (
 \begin_inset Formula $w$
 \end_inset
@@ -5174,12 +5177,12 @@ There might be an intercalate involving
 \begin_inset Formula $L'$
 \end_inset
 
- which contains the symbol 
+ which contain the symbol 
 \begin_inset Formula $L_{i,x}$
 \end_inset
 
  (in row 
-\begin_inset Formula $q\ne1$
+\begin_inset Formula $q\ne i$
 \end_inset
 
 , say), we have 
@@ -5258,11 +5261,11 @@ There might be an intercalate involving
 \end_inset
 
 ).
- So we should subtract 
-\begin_inset Formula $6kn^{3}$
+ Similar logic shows that for each of the 6 cases, we should subtract 
+\begin_inset Formula $kn^{3}$
 \end_inset
 
- to compensate for this.
+ to compensate.
 \end_layout
 
 \end_deeper
@@ -5275,8 +5278,7 @@ we can use
 \begin_inset Formula $i,x,y,z,x',y',z'$
 \end_inset
 
- to do a simple twist, so the number of valid ways to simple twist is at
- least
+ to do a twist, so the number of valid ways to twist is at least
 \begin_inset Formula 
 \begin{align*}
  & \frac{1}{2}k^{2}\left(1-O\left(\frac{s}{k\K}+\frac{1}{k}\right)\right)\left(n^{4}\left(1+O\left(\frac{1}{n}\right)\right)-O\left(\K n^{3}\right)-O\left(kn^{3}\right)-O\left(n^{3}\right)\right)\\
@@ -5312,6 +5314,41 @@ we can use
  to give the same twist).
 \end_layout
 
+\begin_layout Remark*
+Note that there are a number of simpler switching operations one could have
+ defined in place of the twist operation.
+ For instance, one could redefine the rotate operation to use cycles of
+ 2 columns rather than cycles of 3 columns.
+ However, (the analogue of) 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:forwards-rotate"
+
+\end_inset
+
+ would not hold with this simpler switching operation; there would be less
+ freedom to choose a way to switch, and in fact there are Latin rectangles
+ from which it is not possible to create exactly one intercalate using the
+ simpler switching (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MW99"
+
+\end_inset
+
+ for an example).
+ This situation is analogous to the use of 6-cycle switchings rather than
+ 4-cycle switchings in the analysis of random regular graphs (see for example
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KSVW01"
+
+\end_inset
+
+).
+\end_layout
+
 \begin_layout Lemma
 \begin_inset CommandInset label
 LatexCommand label
@@ -5320,7 +5357,7 @@ name "lem:backwards-rotate"
 \end_inset
 
 The number of good Latin rectangles 
-\begin_inset Formula $L\in\LkK k{\K}$
+\begin_inset Formula $L\in\LkKs k{s-1}{\K}$
 \end_inset
 
  from which we can twist to a specific good Latin rectangle 
@@ -5391,8 +5428,8 @@ ref{lem:forwards-rotate,lem:backwards-rotate}
 
 \end_inset
 
- to give an upper and lower bound on the number of ways to simple twist
- from a Latin rectangle in 
+ to give an upper and lower bound on the number of ways to twist from a
+ Latin rectangle in 
 \begin_inset Formula $\LkKs k{s-1}{\K}$
 \end_inset
 
@@ -5505,44 +5542,36 @@ reference "thm:lower-tail"
 \end_layout
 
 \begin_layout Standard
-In this proof, the notation 
-\begin_inset Formula $a\ll b$
+The constant 
+\begin_inset Formula $C$
 \end_inset
 
- means that 
-\begin_inset Formula $b/a$
+ in the theorem statement will be a function of some other constant 
+\begin_inset Formula $C_{0}$
 \end_inset
 
- is sufficiently large (contrary to the usual meaning that 
-\begin_inset Formula $b/a\to\infty$
+, to be determined.
+ For some 
+\begin_inset Formula $\varepsilon\ge C\log^{1/3}n/n^{1/6}$
 \end_inset
 
-).
-\end_layout
-
-\begin_layout Standard
-Suppose 
-\begin_inset Formula $k$
+, let 
+\begin_inset Formula $k=C_{0}\sqrt{n}\log n/\varepsilon$
 \end_inset
 
- and 
-\begin_inset Formula $\K$
+ and let 
+\begin_inset Formula $\K=\varepsilon n/C_{0}$
 \end_inset
 
- satisfy 
-\begin_inset Formula $\sqrt{n}\log n/\varepsilon\ll k\ll n/\log n$
-\end_inset
-
-, 
-\begin_inset Formula $k\log n\ll\K\le n$
-\end_inset
-
- and 
-\begin_inset Formula $\varepsilon\gg\K/n+k/\K$
+, and note that 
+\begin_inset Formula $k\le\K$
 \end_inset
 
 .
- Let 
+\end_layout
+
+\begin_layout Standard
+Let 
 \begin_inset Formula $\mathcal{E}$
 \end_inset
 
@@ -5563,6 +5592,23 @@ Suppose
 \end_inset
 
  rows.
+ Certainly 
+\begin_inset Formula $\mathcal{E}$
+\end_inset
+
+ occurs if every pair of distinct rows (among the first 
+\begin_inset Formula $k$
+\end_inset
+
+) has at most 
+\begin_inset Formula $\K/\left(k-1\right)$
+\end_inset
+
+ intercalates, because for each row there are 
+\begin_inset Formula $k-1$
+\end_inset
+
+ possible pairs of rows involving that row.
  By 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5573,7 +5619,7 @@ reference "thm:two-rows-intercalate-tail"
  and the union bound (and symmetry considerations),
 \begin_inset Formula 
 \[
-\Pr\left(\mathcal{E}^{c}\right)=\exp\left(-\Omega\left(\frac{\K}{k}\log\frac{\K}{k}\right)\right).
+1-\Pr\left(\mathcal{E}\right)=k^{2}\exp\left(-\Omega\left(\frac{\K}{\left(k-1\right)}\log\frac{\K}{\left(k-1\right)}\right)\right)=\exp\left(-\Omega\left(\frac{\K}{k}\log\frac{\K}{k}\right)\right).
 \]
 
 \end_inset
@@ -5591,11 +5637,31 @@ Let
 \end_inset
 
 .
- For any fixed 
-\begin_inset Formula $\varepsilon>0$
+ Noting that 
+\begin_inset Formula $C_{0}\K/n\le\varepsilon$
 \end_inset
 
-, by 
+ and 
+\begin_inset Formula $Ck/\K\le C_{0}^{2}\varepsilon$
+\end_inset
+
+, for large 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+ and much larger 
+\begin_inset Formula $C$
+\end_inset
+
+ the conditions in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:lower-bound-rectangles"
+
+\end_inset
+
+ are satisfied.
+ Combining 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lem:lower-bound-rectangles"
@@ -5617,15 +5683,16 @@ reference "prop:extend-to-latin-squares"
 
 \end_inset
 
-We are assuming that 
-\begin_inset Formula $\varepsilon k\gg\sqrt{n}\log n$
+for large 
+\begin_inset Formula $C_{0}$
 \end_inset
 
- so 
+.
+ Note that 
 \begin_inset Formula $\varepsilon^{2}k^{2}\gg\left(\K/k\right)\log\left(\K/k\right)$
 \end_inset
 
- and it follows that 
+ so 
 \begin_inset Formula 
 \begin{equation}
 \Pr\left(\randNk<\left(1-\varepsilon/2\right)k^{2}/4\right)\le\exp\left(-\Omega\left(\frac{\K}{k}\log\frac{\K}{k}\right)\right)\label{eq:subrectangle-lower-tail}
@@ -5634,333 +5701,163 @@ We are assuming that
 \end_inset
 
 unconditionally.
- Now, fix some 
-\begin_inset Formula $M\in\NN$
-\end_inset
-
- that is no more than say half of the reciprocal of the probability in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:subrectangle-lower-tail"
-
-\end_inset
-
-.
- Choose 
-\begin_inset Formula $M$
-\end_inset
-
- independent uniformly random sets of 
+ To transfer this result from the first 
 \begin_inset Formula $k$
 \end_inset
 
- rows.
- For a given pair of rows, the probability a uniformly random set of 
+ rows to the whole of 
+\begin_inset Formula $\randL$
+\end_inset
+
+, we need the following covering lemma.
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\randF}[1]{\boldsymbol{F}_{\!#1}}
+{\boldsymbol{\boldsymbol{F}_{#1}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:covering-rows"
+
+\end_inset
+
+For any 
+\begin_inset Formula $k\ll n$
+\end_inset
+
+ and any 
+\begin_inset Formula $M\gg\left(n\log n/k\right)^{2}$
+\end_inset
+
+ there exist 
 \begin_inset Formula $k$
 \end_inset
 
- rows contains that pair is 
-\begin_inset Formula $p={n \choose k-2}/{n \choose k}=\left(k/n\right)^{2}\left(1+O\left(\frac{k}{n}\right)\right)$
+-subsets 
+\begin_inset Formula $F_{i},\dots,F_{M}$
 \end_inset
 
-.
- By the Chernoff bound and the union bound, a.a.s.
- every pair is contained in 
+ of 
+\begin_inset Formula $\range n$
+\end_inset
+
+, such that every pair 
+\begin_inset Formula $\left\{ i,j\right\} \subseteq\range n$
+\end_inset
+
+ is included in 
 \begin_inset Formula 
 \[
-Mp+O\left(\sqrt{Mp}\log n\right)=Mp\exp\left(1+\frac{\log n}{\sqrt{Mp}}\right)
+M\left(\frac{k}{n}\right)^{2}\left(1+O\left(\log n/\left(\sqrt{M}k/n\right)+k/n\right)\right)=M\left(\frac{k}{n}\right)^{2}\left(1+o\left(1\right)\right)
 \]
 
 \end_inset
 
-of our 
-\begin_inset Formula $M$
+ of the 
+\begin_inset Formula $F_{i}$
 \end_inset
 
- sets of 
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\randF 1,\dots,\randF M$
+\end_inset
+
+ be independent uniformly random sets of 
 \begin_inset Formula $k$
 \end_inset
 
  rows.
- Fix such a collection of sets of rows.
- By the union bound and symmetry, except with the probability in 
+ For a given pair of rows and some index 
+\begin_inset Formula $i$
+\end_inset
+
+, the probability that 
+\begin_inset Formula $\randF i$
+\end_inset
+
+ contains that pair is 
+\begin_inset Formula 
+\[
+p={n \choose k-2}/{n \choose k}=\left(\frac{k}{n}\right)^{2}\left(1+O\left(\frac{k}{n}\right)\right).
+\]
+
+\end_inset
+
+By the Chernoff bound and the union bound, a.a.s.
+ every pair is contained in 
+\begin_inset Formula 
+\[
+Mp+O\left(\sqrt{Mp}\log n\right)=Mp\left(1+O\left(\frac{\log n}{\sqrt{Mp}}\right)\right).
+\]
+
+\end_inset
+
+of the 
+\begin_inset Formula $\randF i$
+\end_inset
+
+.
+ Therefore there exists a specific choice of the 
+\begin_inset Formula $F_{i}$
+\end_inset
+
+s that satisfies the requirements of the lemma.
+\end_layout
+
+\begin_layout Standard
+We apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:covering-rows"
+
+\end_inset
+
+ with 
+\begin_inset Formula $M=n^{2}$
+\end_inset
+
+, say, to obtain sets 
+\begin_inset Formula $F_{1},\dots,F_{M}$
+\end_inset
+
+.
+ By the union bound and symmetry, the subrectangle given by the rows of
+ each 
+\begin_inset Formula $F_{i}$
+\end_inset
+
+ contains at least 
+\begin_inset Formula $\left(1-\varepsilon/2\right)k^{2}/4$
+\end_inset
+
+ intercalates, except with the probability in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:subrectangle-lower-tail"
 
 \end_inset
 
- each of our sets of 
-\begin_inset Formula $k$
-\end_inset
-
- rows contains at least 
-\begin_inset Formula $\left(1-\varepsilon\right)k^{2}/4$
-\end_inset
-
- intercalates, so assuming 
-\begin_inset Formula $k/n,\,\log n/\sqrt{Mp}\ll\varepsilon$
+.
+ Noting that 
+\begin_inset Formula $k/n+\log n/\left(\sqrt{M}k/n\right)\ll\varepsilon$
 \end_inset
 
 , we have 
 \begin_inset Formula 
 \begin{align*}
-\randN & \ge\frac{M\left(1-\varepsilon/2\right)k^{2}/4}{Mp\left(1+\log n/\sqrt{Mp}\right)}\\
+\randN & \ge\frac{M\left(1-\varepsilon/2\right)k^{2}/4}{M\left(k/n\right)^{2}\left(1+o\left(\varepsilon\right)\right)}\\
  & \ge\left(1-\varepsilon\right)\frac{n^{2}}{4}.
 \end{align*}
-
-\end_inset
-
-It remains to optimize for 
-\begin_inset Formula $k$
-\end_inset
-
-, 
-\begin_inset Formula $\K$
-\end_inset
-
- and 
-\begin_inset Formula $M$
-\end_inset
-
- (and determine for which 
-\begin_inset Formula $\varepsilon$
-\end_inset
-
- feasible values for 
-\begin_inset Formula $k,\K,M$
-\end_inset
-
- exist).
- We find that we can choose 
-\begin_inset Formula $k\asymp\sqrt{n}\log n/\varepsilon$
-\end_inset
-
- and 
-\begin_inset Formula $\K\asymp\varepsilon n$
-\end_inset
-
-, yielding a tail bound of 
-\begin_inset Formula $\exp\left(-\Omega\left(\varepsilon^{2}\sqrt{n}\right)\right)$
-\end_inset
-
-, provided 
-\begin_inset Formula $\varepsilon\gg\log^{1/3}n/n^{1/6}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{comment}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[Proof of the a.a.s.
- lower bound on $X$ in 
-\backslash
-ref{thm:upper+lower}]
-\end_layout
-
-\end_inset
-
-Fix 
-\begin_inset Formula $k$
-\end_inset
-
- satisfying 
-\begin_inset Formula $\sqrt{n}\log n\ll k\ll n/\log n$
-\end_inset
-
-, and fix 
-\begin_inset Formula $\K$
-\end_inset
-
- satisfying 
-\begin_inset Formula $k\log n\ll\K\le n$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $\mathcal{E}$
-\end_inset
-
- be the event that none of the first 
-\begin_inset Formula $k$
-\end_inset
-
- rows of 
-\begin_inset Formula $\randL$
-\end_inset
-
- are involved in more than 
-\begin_inset Formula $\K$
-\end_inset
-
- intercalates, in the Latin rectangle induced by the first 
-\begin_inset Formula $k$
-\end_inset
-
- rows.
- By 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "thm:two-rows-intercalate-tail"
-
-\end_inset
-
- and the union bound (and symmetry considerations), 
-\begin_inset Formula $\Pr\left(\mathcal{E}^{c}\right)=n^{-\omega\left(1\right)}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\randNk$
-\end_inset
-
- be the number of intercalates in the first 
-\begin_inset Formula $k$
-\end_inset
-
- rows of 
-\begin_inset Formula $\randL$
-\end_inset
-
-.
- For any fixed 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, by 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lem:lower-bound-rectangles"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-to-latin-squares"
-
-\end_inset
-
-,
-\begin_inset Formula 
-\[
-\Pr\left(\randNk<\left(1-\varepsilon\right)k^{2}/4\cond\mathcal{E}\right)=e^{-\Omega\left(k^{2}\right)}e^{O\left(n\log^{2}n\right)}=e^{-\omega\left(n\log^{2}n\right)}=n^{-\omega\left(1\right)}.
-\]
-
-\end_inset
-
-It follows that 
-\begin_inset Formula $\Pr\left(\randNk<\left(1-\varepsilon\right)k^{2}/4\right)=n^{-\omega\left(1\right)}$
-\end_inset
-
- unconditionally.
-\end_layout
-
-\begin_layout Standard
-Now, fix some large 
-\begin_inset Formula $M=n^{O\left(1\right)}$
-\end_inset
-
- (say, 
-\begin_inset Formula $M=n^{2}$
-\end_inset
-
-), and choose 
-\begin_inset Formula $M$
-\end_inset
-
- independent uniformly random sets of 
-\begin_inset Formula $k$
-\end_inset
-
- rows.
- For a given pair of rows, the probability a uniformly random set of 
-\begin_inset Formula $k$
-\end_inset
-
- rows contains that pair is 
-\begin_inset Formula $p={n \choose k-2}/{n \choose k}=\left(k/n\right)^{2}\left(1+O\left(\frac{k}{n}\right)\right)$
-\end_inset
-
-.
- By the Chernoff bound and the union bound, a.a.s.
- every pair is contained in 
-\begin_inset Formula $Mp+O\left(\sqrt{Mp}\log n\right)\sim Mp$
-\end_inset
-
- of our 
-\begin_inset Formula $M$
-\end_inset
-
- sets of 
-\begin_inset Formula $k$
-\end_inset
-
- rows.
- By the union bound and symmetry, a.a.s.
- each of our sets of 
-\begin_inset Formula $k$
-\end_inset
-
- rows contains at least 
-\begin_inset Formula $\left(1-\varepsilon\right)k^{2}/4$
-\end_inset
-
- intercalates, so 
-\begin_inset Formula 
-\begin{align*}
-\randN & \ge\frac{M\left(1-\varepsilon\right)k^{2}/4}{\left(1+o\left(1\right)\right)Mp}\\
- & \sim\left(1-\varepsilon\right)\frac{n^{2}}{4}.
-\end{align*}
-
-\end_inset
-
-If we optimize the above argument, the best a.a.s.
- lower bound we can obtain is 
-\begin_inset Formula 
-\[
-\randN\ge\left(1+O\left(\frac{\log^{1/5}n}{n^{1/10}}\right)\right)\frac{n^{2}}{4}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{comment}
-\end_layout
 
 \end_inset
 
