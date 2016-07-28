@@ -1413,7 +1413,7 @@ box
 volume 
 \emph default
 
-\begin_inset Formula $\vol T=\left|X\right|\left|Y\right|\left|Z\right|$
+\begin_inset Formula $\vol T=\left|I\right|\left|X\right|\left|Q\right|$
 \end_inset
 
 .
