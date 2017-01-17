@@ -48,6 +48,7 @@
 \theoremstyle{plain}
 \newtheorem{myprop}[mythm]{\protect\propositionname}
 \renewenvironment{prop}{\begin{myprop}}{\end{myprop}}
+\crefname{myprop}{Proposition}{Propositions}
 \theoremstyle{plain}
 \newtheorem{mycor}[mythm]{\protect\corollaryname}
 \renewenvironment{cor}{\begin{mycor}}{\end{mycor}}
@@ -92,18 +93,7 @@
 
 %graph drawing
 \usepackage{tikz}
-\usetikzlibrary{external}
-\usetikzlibrary{decorations.markings}
-\usetikzlibrary{arrows.meta}
-\tikzexternalize
 \tikzstyle{vertex}=[circle,draw=black,fill=black,inner sep=0,minimum size=0.2cm,text=white,font=\footnotesize]
-\tikzset{arc/.style={
-        decoration={markings,
-            mark= at position 0.5 with {\arrow{Latex[length=2mm,width=2mm]}} ,
-        },
-        postaction={decorate}
-    }
-}
 \tikzset{every loop/.style={min distance=50,in=50,out=130,looseness=7}}
 
 %caption labels
@@ -2027,14 +2017,7 @@ key "MW99"
 
 \end_inset
 
- (see also 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:permanent"
-
-\end_inset
-
-).
+.
 \end_layout
 
 \begin_layout Proposition
@@ -6152,7 +6135,14 @@ Let
 \end_inset
 
 .
- We can use standard bounds on the permanent to prove that 
+ In a similar way to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-to-latin-squares"
+
+\end_inset
+
+, we can use standard bounds on the permanent to prove that 
 \begin_inset Formula $\left|\L^{*}\left(G\right)\right|$
 \end_inset
 
@@ -6161,14 +6151,6 @@ Let
 \end_inset
 
 .
- See 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:permanent"
-
-\end_inset
-
- for details.
 \end_layout
 
 \begin_layout Proposition
@@ -6210,7 +6192,174 @@ uniformly over
 \end_layout
 
 \begin_layout Standard
-So, 
+For completeness, we provide a proof of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Note that we can interpret a Latin square as a 1-factorization of 
+\begin_inset Formula $K_{n,n}$
+\end_inset
+
+ (that is, a proper edge colouring with 
+\begin_inset Formula $n$
+\end_inset
+
+ labelled colour classes).
+ The correspondence is that the edge between vertex 
+\begin_inset Formula $i$
+\end_inset
+
+ in the first part and vertex 
+\begin_inset Formula $x$
+\end_inset
+
+ in the second part receives colour 
+\begin_inset Formula $q$
+\end_inset
+
+ if 
+\begin_inset Formula $L_{i,x}=q$
+\end_inset
+
+.
+ From this point of view, a Latin square in 
+\begin_inset Formula $\Lext G$
+\end_inset
+
+ is uniquely defined by a 1-factorization of 
+\begin_inset Formula $G$
+\end_inset
+
+, and a 1-factorization of the complement of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\Phi\left(G\right)$
+\end_inset
+
+ be the number of 1-factorizations of 
+\begin_inset Formula $G$
+\end_inset
+
+; it suffices to prove that 
+\begin_inset Formula $\Phi\left(G\right)/\Phi\left(G'\right)\le e^{O\left(n\log^{2}n\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\phi\left(G\right)$
+\end_inset
+
+ be the number of 1-factors (perfect matchings) of a graph 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ The Egorychev-Falikman theorem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ego81,Fal81"
+
+\end_inset
+
+ (previously known as the Van der Waerden conjecture) and Br
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+egman's theorem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bre73"
+
+\end_inset
+
+ (previously known as Minc's conjecture) give lower and upper bounds on
+ 
+\begin_inset Formula $\phi\left(G\right)$
+\end_inset
+
+ for a 
+\begin_inset Formula $d$
+\end_inset
+
+-regular bipartite graph 
+\begin_inset Formula $G$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+n!\left(\frac{d}{n}\right)^{n}\le\phi\left(G\right)\le\left(d!\right)^{n/d}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We can therefore give bounds on the number of ways to choose a 1-factorization
+ by choosing its 1-factors one-by-one:
+\begin_inset Formula 
+\[
+\prod_{k=1}^{d}n!\left(\frac{k}{n}\right)^{n}\le\Phi\left(G\right)\le\prod_{k=1}^{d}\left(k!\right)^{n/k}.
+\]
+
+\end_inset
+
+Now, Stirling's inequality gives
+\begin_inset Formula 
+\[
+\frac{\left(k!\right)^{n/k}}{n!\left(k/n\right)^{n}}\le\frac{\left(\Theta\left(\sqrt{k}\left(k/e\right)^{k}\right)\right)^{n/k}}{\sqrt{n}\left(n/e\right)^{n}\left(k/n\right)^{n}}\le\exp\left(O\left(\frac{n\left(\log k+1\right)}{k}\right)\right),
+\]
+
+\end_inset
+
+so using the approximation 
+\begin_inset Formula $\sum_{i=1}^{d}1/i=\Theta\left(\log d+1\right)$
+\end_inset
+
+ for the harmonic series,
+\begin_inset Formula 
+\[
+\frac{\Phi\left(G\right)}{\Phi\left(G'\right)}\le\prod_{k=1}^{d}\frac{\left(k!\right)^{n/k}}{n!\left(k/n\right)^{n}}=e^{O\left(n\left(\log^{2}d+1\right)\right)}=e^{O\left(n\log^{2}n\right)}
+\]
+
+\end_inset
+
+as desired.
+\end_layout
+
+\begin_layout Standard
+The upshot of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:extend-graphs-to-latin-squares"
+
+\end_inset
+
+ is that 
 \begin_inset Formula $G_{Q}\left(\randL\right)$
 \end_inset
 
@@ -6370,18 +6519,26 @@ For any
 \end_layout
 
 \begin_layout Standard
-(We remark that a precise asymptotic estimate for 
+We remark that a precise asymptotic estimate for 
 \begin_inset Formula $\left|\Gd d\right|$
 \end_inset
 
- was very recently announced by Liebenau and Wormald 
+ will very soon become available, due to some soon-to-be-published developments
+ by Liebenau and Wormald 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "LW16"
 
 \end_inset
 
-).
+ and independently Isaev and McKay 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "IM17"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Proof
@@ -6656,10 +6813,16 @@ reference "thm:weak-discrepancy"
 \end_inset
 
  would be interesting, because such an improvement would have to avoid the
- error introduced by theorems of the type in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:permanent"
+ error introduced by the permanent estimates in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{prop:extend-to-latin-squares,prop:extend-graphs-to-latin-squares}
+\end_layout
 
 \end_inset
 
@@ -6669,15 +6832,14 @@ reference "sec:permanent"
 \begin_layout Standard
 Finally, it would be interesting to prove analogous results for more general
  types of random designs, such as Latin cubes or Steiner triple systems.
- Unfortunately, results of the type in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:permanent"
+ See for example the recent work of Kwan 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kwa16"
 
 \end_inset
 
- are not readily available in these cases, which considerably limits the
- (already very limited) tools at one's disposal.
+ on random Steiner triple systems.
 \end_layout
 
 \begin_layout Standard
@@ -6712,293 +6874,6 @@ crefalias{section}{appsec}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:permanent"
-
-\end_inset
-
-Proofs of
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{}{ Proposition}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-to-latin-squares"
-
-\end_inset
-
- and
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{}{ Proposition}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-graphs-to-latin-squares"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We can interpret a Latin square as a 1-factorization of 
-\begin_inset Formula $K_{n,n}$
-\end_inset
-
- (that is, an edge colouring with 
-\begin_inset Formula $n$
-\end_inset
-
- colours).
- The correspondence is that the edge between vertex 
-\begin_inset Formula $i$
-\end_inset
-
- in the first part and vertex 
-\begin_inset Formula $x$
-\end_inset
-
- in the second part receives colour 
-\begin_inset Formula $q$
-\end_inset
-
- if 
-\begin_inset Formula $L_{i,x}=q$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\phi\left(G\right)$
-\end_inset
-
- be the number of 1-factors (perfect matchings) of a graph 
-\begin_inset Formula $G$
-\end_inset
-
-.
- The Egorychev-Falikman theorem 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Ego81,Fal81"
-
-\end_inset
-
- (previously known as the Van der Waerden conjecture) and Br
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-egman's theorem 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bre73"
-
-\end_inset
-
- (previously known as Minc's conjecture) give lower and upper bounds on
- 
-\begin_inset Formula $\phi\left(G\right)$
-\end_inset
-
- for a 
-\begin_inset Formula $d$
-\end_inset
-
--regular bipartite graph 
-\begin_inset Formula $G$
-\end_inset
-
-:
-\begin_inset Formula 
-\[
-n!\left(\frac{d}{n}\right)^{n}\le\phi\left(G\right)\le\left(d!\right)^{n/d}.
-\]
-
-\end_inset
-
-We can therefore give bounds on the number of ways to choose a 1-factorization
- by choosing its 1-factors one-by-one:
-\begin_inset Formula 
-\[
-\prod_{k=1}^{d}n!\left(\frac{k}{n}\right)^{n}\le\Phi\left(G\right)\le\prod_{k=1}^{d}\left(k!\right)^{n/k}.
-\]
-
-\end_inset
-
-Now, Stirling's inequality gives
-\begin_inset Formula 
-\[
-\frac{\left(k!\right)^{n/k}}{n!\left(k/n\right)^{n}}\le\frac{\left(\Theta\left(\sqrt{k}\left(k/e\right)^{k}\right)\right)^{n/k}}{\sqrt{n}\left(n/e\right)^{n}\left(k/n\right)^{n}}\le\exp\left(O\left(\frac{n\left(\log k+1\right)}{k}\right)\right),
-\]
-
-\end_inset
-
-so using the approximation 
-\begin_inset Formula $\sum_{i=1}^{d}1/i=\Theta\left(\log d+1\right)$
-\end_inset
-
- for the harmonic series,
-\begin_inset Formula 
-\[
-\prod_{k=1}^{d}\frac{\left(k!\right)^{n/k}}{n!\left(k/n\right)^{n}}=e^{O\left(n\left(\log^{2}d+1\right)\right)}.
-\]
-
-\end_inset
-
-We have the following as a consequence.
-\end_layout
-
-\begin_layout Proposition
-\begin_inset CommandInset label
-LatexCommand label
-name "prop:factorization-bounds"
-
-\end_inset
-
-Let 
-\begin_inset Formula $G$
-\end_inset
-
- and 
-\begin_inset Formula $G'$
-\end_inset
-
- be 
-\begin_inset Formula $d$
-\end_inset
-
--regular bipartite graphs on 
-\begin_inset Formula $n+n$
-\end_inset
-
- vertices.
- Then
-\begin_inset Formula 
-\[
-\frac{\Phi\left(G\right)}{\Phi\left(G'\right)}\le e^{O\left(n\left(\log^{2}d+1\right)\right)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now, in the notation of 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-graphs-to-latin-squares"
-
-\end_inset
-
-, note that 
-\begin_inset Formula $\Lext G$
-\end_inset
-
- is the number of 1-factorizations of 
-\begin_inset Formula $G$
-\end_inset
-
-, times the number of 1-factorizations of its complement.
- For 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-to-latin-squares"
-
-\end_inset
-
-, we need to exchange the role of symbols and rows in our correspondence
- between Latin squares and 1-factorizations of 
-\begin_inset Formula $K_{n,n}$
-\end_inset
-
-: put an edge coloured 
-\begin_inset Formula $i$
-\end_inset
-
- between 
-\begin_inset Formula $x$
-\end_inset
-
- and 
-\begin_inset Formula $q$
-\end_inset
-
- if 
-\begin_inset Formula $L_{i,x}=q$
-\end_inset
-
-.
- Then, 
-\begin_inset Formula $\Lext L$
-\end_inset
-
- is the number of 1-factorizations in the complement of a certain 
-\begin_inset Formula $k$
-\end_inset
-
--regular bipartite graph, which is an 
-\begin_inset Formula $\left(n-k\right)$
-\end_inset
-
--regular bipartite graph.
- Therefore both 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-graphs-to-latin-squares"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:extend-to-latin-squares"
-
-\end_inset
-
- follow from 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "prop:factorization-bounds"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
