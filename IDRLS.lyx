@@ -3829,7 +3829,11 @@ For any cycle
 \begin_inset Formula $\left\{ x,y\right\} \in\FL L$
 \end_inset
 
-, we have 
+, we have
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Formula $\fl{\left\{ x,y\right\} }{\fl{\left\{ x,y\right\} }L}=L$
 \end_inset
 
